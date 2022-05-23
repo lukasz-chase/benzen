@@ -8,12 +8,12 @@ import { getItemsByItem } from "../actions/itemsAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 
-const SimilarItems = ({ category, gender, pathId, mv, id }) => {
+const SimilarItems = ({ category, gender, pathId, id }) => {
   //state
   const dispatch = useDispatch();
   //useEffects
   useEffect(() => {
-    dispatch(getItemsByItem(gender, category));
+    dispatch(getItemsByItem(gender, category, 1));
   }, [dispatch, gender, pathId, category]);
   //get data back
   const { items } = useSelector((state) => state.item);

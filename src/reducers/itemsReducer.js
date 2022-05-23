@@ -10,6 +10,8 @@ import {
   UPDATE_ITEM,
   DELETE,
   GET_FAVORITES,
+  START_LOADING_ITEM,
+  END_LOADING_ITEM,
 } from "../constants/actionTypes";
 
 const initState = {
@@ -19,6 +21,7 @@ const initState = {
   favorites: [],
   currentPage: 0,
   numberOfPages: 0,
+  isItemLoading: true,
   isLoading: true,
 };
 
@@ -35,8 +38,12 @@ const itemsReducer = (state = initState, action) => {
       };
     case START_LOADING:
       return { ...state, isLoading: true };
+    case START_LOADING_ITEM:
+      return { ...state, isItemLoading: true };
     case END_LOADING:
       return { ...state, isLoading: false };
+    case END_LOADING_ITEM:
+      return { ...state, isItemLoading: false };
     case CREATE:
       return { ...state, items: [...state.items, action.payload] };
     case FETCH_ITEM:

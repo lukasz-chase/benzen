@@ -57,7 +57,7 @@ const ItemDetailsPage = () => {
   useEffect(() => {
     dispatch(getItem(pathId));
   }, [dispatch, pathId]);
-  const { item, isLoading } = useSelector((state) => state.item);
+  const { item, isItemLoading } = useSelector((state) => state.item);
   //handlers
   const activeImageHandler = (list) => {
     for (let i = 0; i < list; i++) {
@@ -120,7 +120,7 @@ const ItemDetailsPage = () => {
     <>
       {" "}
       <ItemDetailsPageComponent>
-        <ShowLoading isLoading={isLoading}>
+        <ShowLoading isLoading={isItemLoading}>
           <div className="top-side">
             <div className="left-side">
               {item.images && (
@@ -357,13 +357,12 @@ const ItemDetailsPage = () => {
           <h1>Recommended</h1>
         </ShowLoading>
       </ItemDetailsPageComponent>
-      {/* <SimilarItems
+      <SimilarItems
         category={item.item}
-        gender={gender}
+        gender={item.gender}
         pathId={pathId}
-        id={item.id}
-        mv={mv}
-      /> */}
+        id={item._id}
+      />
       {item && (
         <CheckoutModal
           item={item}

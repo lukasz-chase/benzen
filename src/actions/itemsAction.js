@@ -3,7 +3,9 @@ import {
   CREATE,
   FETCH_ITEM,
   START_LOADING,
+  START_LOADING_ITEM,
   END_LOADING,
+  END_LOADING_ITEM,
   FETCH_ALL,
   FETCH_BY_ITEM,
   FETCH_BY_SEARCH,
@@ -68,10 +70,10 @@ export const getItemsOnSale =
   };
 export const getItem = (id) => async (dispatch) => {
   try {
-    dispatch({ type: START_LOADING });
+    dispatch({ type: START_LOADING_ITEM });
     const { data } = await api.getItem(id);
     dispatch({ type: FETCH_ITEM, payload: { item: data } });
-    dispatch({ type: END_LOADING });
+    dispatch({ type: END_LOADING_ITEM });
   } catch (error) {
     console.log(error);
   }
