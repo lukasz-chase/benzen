@@ -22,10 +22,10 @@ const SimilarItems = ({ category, gender, pathId, id }) => {
       {items && (
         <>
           {items
-            .filter((i) => i.id !== id)
+            .filter((i) => i._id !== id)
             .slice(0, 9)
             .map((item) => (
-              <div className="card" key={item.id}>
+              <div className="card" key={item._id}>
                 <Card key={item._id} item={item} />
               </div>
             ))}
