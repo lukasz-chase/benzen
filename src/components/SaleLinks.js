@@ -14,7 +14,7 @@ const SaleLinks = ({ gender, category, hamburger, setNavOpen, navOpen }) => {
   //useEffect
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/items/sale/?gender=${gender}`)
+      .get(`https://benzen-server.herokuapp.com/items/sale/?gender=${gender}`)
       .then((res) =>
         setItemList([...new Set(res?.data?.items.map((a) => a.item))])
       );
