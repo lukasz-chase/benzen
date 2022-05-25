@@ -6,7 +6,15 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-const Input = ({ label, name, value, type, handleChange, required }) => {
+const Input = ({
+  label,
+  name,
+  value,
+  type,
+  handleChange,
+  required,
+  handler,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <TextField
@@ -17,6 +25,7 @@ const Input = ({ label, name, value, type, handleChange, required }) => {
       value={value}
       type={showPassword ? "text" : type}
       onChange={handleChange}
+      onKeyDown={(e) => (e.key === "Enter" ? handler() : "")}
       InputProps={
         type === "password"
           ? {

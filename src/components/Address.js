@@ -67,6 +67,10 @@ const AddressWrapper = styled.div`
     cursor: pointer;
     border: 1px solid black;
   }
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    justify-content: space-evenly;
+  }
   .checkbox {
     border: 1px solid rgba(0, 0, 0, 0.2);
     width: 1rem;

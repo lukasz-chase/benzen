@@ -37,6 +37,9 @@ const FinalizedComponent = styled.div`
   flex-direction: column;
   h2 {
     font-size: 2rem;
+    @media screen and (max-width: 1000px) {
+      font-size: 1rem;
+    }
     b {
       font-weight: bold;
       color: green;
@@ -48,7 +51,11 @@ const FinalizedComponent = styled.div`
   }
   .orderedItems {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    @media screen and (max-width: 1000px) {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
   }
 `;
 

@@ -1,3 +1,5 @@
+import { HEADADMIN, ADMIN } from "../constants/roleTypes";
+
 export const ManClothesLinks = [
   {
     title: "Jumpers, Cardigans",
@@ -198,5 +200,31 @@ export const WomanShoesLinks = [
     title: "Sneakers",
     path: "/woman/shoes/sneakers",
     item: "sneakers",
+  },
+];
+
+export const adminLinks = [
+  {
+    path: "/admin/panel/orders",
+    label: "Manage Orders",
+    name: "orders",
+    restriction: HEADADMIN || ADMIN,
+  },
+  {
+    path: "/admin/panel/items",
+    label: "Manage Items",
+    name: "items",
+    restriction: HEADADMIN || ADMIN,
+  },
+  {
+    path: "/admin/panel/users",
+    label: "Manage Users",
+    name: "users",
+    restriction: HEADADMIN,
+  },
+  {
+    path: "/add-item",
+    label: "Add Item",
+    restriction: HEADADMIN || ADMIN,
   },
 ];

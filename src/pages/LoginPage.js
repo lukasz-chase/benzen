@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useEffect } from "react";
+import React, { useState } from "react";
 //react router
 import { useLocation } from "react-router";
 import { Link, useHistory } from "react-router-dom";
@@ -22,8 +22,6 @@ import { SIGN_IN_ERROR, SIGN_UP_ERROR } from "../constants/actionTypes";
 
 const AccountPage = () => {
   //state
-  const [size, setSize] = useState([0, 0]);
-  const [mv, setMV] = useState(false);
   const { signInError, signUpError } = useSelector((state) => state.auth);
   //login state
   const [form, setForm] = useState({
@@ -39,24 +37,7 @@ const AccountPage = () => {
   const order = location.pathname.split("/")[4];
   //history
   const history = useHistory();
-  //getting width
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  useEffect(() => {
-    setMV(window.matchMedia("(min-width: 1000px)").matches);
-  }, [size]);
-
   const clearForm = () => {
-    dispatch({
-      type: SIGN_UP_ERROR,
-      payload: undefined,
-    });
     setForm({
       email: "",
       password: "",
@@ -102,11 +83,7 @@ const AccountPage = () => {
   const handleForm = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
   return (
-    <AccountPageComponent
-      style={{
-        flexDirection: mv ? "row" : "column",
-      }}
-    >
+    <AccountPageComponent>
       <div
         className="left-side"
         style={{ flex: pathName === "login" ? "1.2" : "1" }}
@@ -124,6 +101,7 @@ const AccountPage = () => {
               type={input.type}
               handleChange={(e) => handleForm(e)}
               required={input.required}
+              handler={input.useHandler ? () => loginHandler() : ""}
             />
           ))}
         </div>
@@ -222,6 +200,9 @@ const AccountPageComponent = styled.div`
   min-height: 70vh;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
   .error {
     color: tomato;
     text-transform: uppercase;

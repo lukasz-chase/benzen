@@ -20,11 +20,12 @@ const ButtonWrapper = styled.div`
   text-decoration: none;
   border-radius: 5px;
   pointer-events: ${({ disabled }) => (disabled ? "disabled" : "all")};
-  height: ${({ size }) => (size === "lg" ? "4rem" : "2rem")};
-  min-width: ${({ size }) => (size === "lg" ? "20rem" : "10rem")};
+  height: ${({ size }) => (size === "lg" ? "6vh" : "4vh")};
+  min-width: ${({ size }) => (size === "lg" ? "20vw" : "12vw")};
   max-width: fit-content;
   font-size: ${({ size }) => (size === "lg" ? "20px" : "13px")};
   display: flex;
+  font-weight: bold;
   align-items: center;
   justify-content: center;
   text-transform: upperCase;
@@ -43,9 +44,13 @@ const ButtonWrapper = styled.div`
     color: ${({ variant }) => (variant === "black" ? "black" : "white")};
   }
   @media screen and (max-width: 1000px) {
-    height: ${({ size }) => (size === "lg" ? "3rem" : "2rem")};
-    min-width: ${({ size }) => (size === "lg" ? "15rem" : "10rem")};
+    height: ${({ size }) => (size === "lg" ? "5vh" : "3vh")};
     font-size: ${({ size }) => (size === "lg" ? "15px" : "10px")};
+  }
+  @media screen and (max-width: 500px) {
+    min-width: 12vh;
+    max-width: 50vh;
+    font-size: 9px;
   }
 `;
 

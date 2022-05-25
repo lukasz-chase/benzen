@@ -14,22 +14,32 @@ import { getItemsBySearch } from "../actions/itemsAction";
 import { useDispatch } from "react-redux";
 //components
 import ShowLoading from "../components/ShowLoading";
+//material ui
+import Pagination from "@material-ui/lab/Pagination";
 
 const useQuery = () => new URLSearchParams(useLocation().search);
 
 const SearchPage = () => {
   //state
-  const [sort, setSort] = useState("");
+  const [page, setPage] = useState(1);
+  const [sort, setSort] = useState(1);
   const location = useLocation();
   const dispatch = useDispatch();
   const gender = location.pathname.split("/")[2];
   const question = useQuery().get("searchQuery");
   //dispatch data
   useEffect(() => {
-    dispatch(getItemsBySearch(gender, question));
-  }, [dispatch, gender, question]);
+    dispatch(getItemsBySearch(gender, question, page, sort));
+  }, [dispatch, gender, question, page, sort]);
   //get data back
-  const { items, isLoading } = useSelector((state) => state.item);
+  const { items, isLoading, numberOfPages } = useSelector(
+    (state) => state.item
+  );
+  //handlers
+  const handlePage = (e, v) => {
+    setPage(v);
+    window.scrollTo(0, 0);
+  };
   return (
     <SearchPageComponent>
       {question !== "" && <h1>Results for {question}</h1>}
@@ -47,6 +57,12 @@ const SearchPage = () => {
         {items.length === 0 && (
           <div className="no-match-found">No results found</div>
         )}
+        <Pagination
+          count={parseInt(page)}
+          page={numberOfPages}
+          onChange={handlePage}
+          className="pagination"
+        />
       </ShowLoading>
     </SearchPageComponent>
   );
@@ -62,12 +78,11 @@ const SearchPageComponent = styled.div`
     font-size: 1rem;
   }
   .items-display {
-    width: 80%;
-    display: Flex;
-    justify-content: space-evenly;
+    display: flex;
     flex-wrap: wrap;
-    @media screen and (max-width: 1200px) {
-      width: 100%;
+    margin-top: 1rem;
+    @media screen and (max-width: 1000px) {
+      justify-content: center;
     }
   }
   .no-match-found {

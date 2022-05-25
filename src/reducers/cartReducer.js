@@ -6,6 +6,7 @@ import {
   SET_CART_PRICE,
   CHANGE_ITEM_PRICE,
   ADD_TO_CART,
+  EMPTY_CART,
 } from "../constants/actionTypes";
 
 const initState = {
@@ -54,10 +55,17 @@ const cartReducer = (state = initState, action) => {
         cart: state.cart.filter(
           (item) =>
             !(
-              item._id === action.payload._id &&
+              item._id === action.payload.id &&
               item.size === action.payload.size
             )
         ),
+      };
+    case EMPTY_CART:
+      return {
+        ...state,
+        cart: [],
+        cartPrice: 0,
+        discount: false,
       };
     case DISCOUNT_CART_PRICE:
       return {
@@ -71,11 +79,11 @@ const cartReducer = (state = initState, action) => {
       };
     case CHANGE_ITEM_PRICE:
       const newCart = state.cart.map((item) =>
-        item._id === action.payload._id && item.size === action.payload.size
+        item._id === action.payload.id && item.size === action.payload.size
           ? (item = {
               ...item,
               discount: true,
-              beforeDiscount: item.price,
+              priceBeforeDiscount: item.price,
               price: item.price * 0.9,
             })
           : item

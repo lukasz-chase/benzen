@@ -90,7 +90,7 @@ const AddressModal = ({
 };
 
 const AddressComponent = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 5;
   background-color: rgba(0, 0, 0, 0.4);
   left: 0;

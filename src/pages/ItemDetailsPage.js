@@ -71,7 +71,9 @@ const ItemDetailsPage = () => {
     if (itemsSize !== "") {
       setCheckoutModal(!checkoutModalOpen);
       setProceedError(false);
-      const found = cart.find((i) => i.id === item.id && i.size === itemsSize);
+      const found = cart.find(
+        (i) => i._id === item._id && i.size === itemsSize
+      );
       item.size = itemsSize;
       if (found) {
         dispatch({
@@ -184,7 +186,6 @@ const ItemDetailsPage = () => {
               )}
             </div>
             <div className="right-side">
-              {}
               {isAdmin(user) && (
                 <>
                   {fromAdminPage && <GoBackButton />}
@@ -222,7 +223,7 @@ const ItemDetailsPage = () => {
                       </p>
                     </>
                   ) : (
-                    item.price
+                    `${item.price} GBP`
                   )}{" "}
                 </span>
                 {proceedError && (
@@ -358,10 +359,11 @@ const ItemDetailsPage = () => {
         </ShowLoading>
       </ItemDetailsPageComponent>
       <SimilarItems
-        category={item.item}
+        category={item.category}
         gender={item.gender}
         pathId={pathId}
         id={item._id}
+        item={item.item}
       />
       {item && (
         <CheckoutModal

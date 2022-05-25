@@ -57,6 +57,9 @@ const OrderComponent = styled.div`
     font-size: 1.5rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding: 1rem;
+        @media screen and (max-width: 1000px) {
+      flex-direction: column;
+    }
     .order-left {
       display: flex;
       flex-direction: column;

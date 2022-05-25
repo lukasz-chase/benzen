@@ -1,5 +1,4 @@
 export const CREATE = "CREATE";
-export const FETCH_ALL = "FETCH_ALL";
 export const FETCH_ITEM = "FETCH_ITEM";
 export const FETCH_BY_SEARCH = "FETCH_BY_SEARCH";
 export const FETCH_BY_ITEM = "FETCH_BY_ITEM";
@@ -33,6 +32,7 @@ export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const DISCOUNT_CART_PRICE = "DISCOUNT_CART_PRICE";
 export const SET_CART_PRICE = "SET_CART_PRICE";
 export const CHANGE_ITEM_PRICE = "CHANGE_ITEM_PRICE";
+export const EMPTY_CART = "EMPTY_CART";
 
 export const GET_ORDERS = "GET_ORDERS";
 export const GET_ORDER = "GET_ORDER";

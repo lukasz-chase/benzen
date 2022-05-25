@@ -24,6 +24,8 @@ import CheckoutItem from "../components/CheckoutItem";
 import { deliveryOptions, paymentOptions } from "../descriptions/options";
 //notistack
 import { useSnackbar } from "notistack";
+//actionTypes
+import { EMPTY_CART } from "../constants/actionTypes";
 
 const CheckoutPage = () => {
   //snack bar
@@ -91,6 +93,7 @@ const CheckoutPage = () => {
           deliveryPrice: deliveryPrice,
         })
       );
+      dispatch({ type: EMPTY_CART });
       history.push("/checkout/order/finalized");
     }
   };

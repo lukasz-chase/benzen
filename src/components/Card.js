@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 //actions
 import { addToFavorites } from "../actions/userActions";
 
-const Card = ({ item, adminPanel }) => {
+const Card = ({ item, adminPanel, size = "sm" }) => {
   //state
   const { user, isLoading } = useSelector((state) => state.user);
   const [favorite, setFavorite] = useState(false);
@@ -43,8 +43,8 @@ const Card = ({ item, adminPanel }) => {
     }
   };
   return (
-    <CardComponent>
-      {user && (
+    <CardComponent size={size}>
+      {user._id && (
         <FavoriteBorderIcon
           className="favoriteIcon"
           style={{ color: favorite ? "red" : "rgba(0, 0, 0, 0.2)" }}
@@ -65,15 +65,13 @@ const Card = ({ item, adminPanel }) => {
       </Link>
       <div className="name">{item.name}</div>
       <div className="price">
-        {item.discount === "true" || item.discount === true ? (
-          <p>
-            {item.price} GBP
-            <span style={{ textDecoration: "line-through" }}>
-              {item.priceBeforeDiscount} GBP
-            </span>
-          </p>
-        ) : (
-          <span>{item.price} GBP</span>
+        <p style={{ color: item.discount === true ? "tomato" : "black" }}>
+          {item.price} GBP
+        </p>
+        {item.discount === true && (
+          <span style={{ textDecoration: "line-through", paddingLeft: "5px" }}>
+            {item.priceBeforeDiscount} GBP
+          </span>
         )}
       </div>
     </CardComponent>
@@ -86,15 +84,16 @@ const CardComponent = styled.div`
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  height: 27rem;
-  width: 19rem;
+  width: ${({ size }) => (size === "sm" ? "18vw" : "24vw")};
   margin: 0.1rem;
+  @media screen and (max-width: 1000px) {
+    width: ${({ size }) => (size === "sm" ? "40%" : "60%")};
+  }
   .link {
     text-align: center;
   }
   img {
     width: 100%;
-    height: 25rem;
     object-fit: cover;
     object-position: center;
   }
@@ -104,26 +103,21 @@ const CardComponent = styled.div`
     @media screen and (max-width: 1000px) {
       font-size: 0.7rem;
     }
-    p {
-      color: red;
-      padding: 0;
-      margin: 0;
-    }
   }
   .name {
-    height: 1rem;
+    min-height: 1rem;
+    max-height: 2rem;
     padding: 2px;
     font-weight: bold;
     font-size: 0.8rem;
     @media screen and (max-width: 1000px) {
       font-size: 0.6rem;
-      height: 1.3rem;
     }
   }
   .favoriteIcon {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 10px;
     z-index: 2;
     font-size: 3rem;
     &:hover {

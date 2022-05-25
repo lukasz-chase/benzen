@@ -38,7 +38,7 @@ const CartPage = () => {
   const { user } = useSelector((state) => state.user);
   useEffect(() => {
     if (user) {
-      dispatch(getUserOrders(user.id));
+      dispatch(getUserOrders(user._id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
@@ -79,7 +79,7 @@ const CartPage = () => {
         !item.discount
           ? dispatch({
               type: CHANGE_ITEM_PRICE,
-              payload: { id: item.id, size: item.size },
+              payload: { id: item._id, size: item.size },
             })
           : ""
       );
@@ -100,7 +100,7 @@ const CartPage = () => {
               !item.discount
                 ? dispatch({
                     type: CHANGE_ITEM_PRICE,
-                    payload: { id: item.id },
+                    payload: { id: item._id },
                   })
                 : ""
             );
@@ -194,7 +194,7 @@ const CartPage = () => {
                   <div className="checkout-button">
                     <Link
                       to={
-                        user
+                        user._id
                           ? "/checkout/order"
                           : "/customer/account/login/order"
                       }

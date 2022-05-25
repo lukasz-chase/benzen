@@ -3,8 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 const CheckoutItem = ({ item }) => {
-  const { img, name, cartAmount, discount, size, price, priceBeforeDiscount } =
-    item;
+  const { img, name, cartAmount, discount, size, price } = item;
   return (
     <CheckoutItemWrapper>
       <img src={img} alt={name} />
@@ -17,21 +16,18 @@ const CheckoutItem = ({ item }) => {
         </div>
         <div className="item-size">
           <span>Size: {size}</span>
-          {discount === "true" || discount === true ? (
-            <span style={{ color: "red", fontWeight: "bold" }}>
-              {parseFloat(price * cartAmount).toFixed(2)} GBP{" "}
-              <b
-                style={{
-                  textDecoration: "line-through",
-                  fontWeight: "normal",
-                }}
-              >
-                {(priceBeforeDiscount * cartAmount).toFixed(2)} GBP
-              </b>
+          <div className="item-price">
+            {discount && (
+              <span style={{ color: "red", fontWeight: "bold" }}>
+                {parseFloat(price * cartAmount).toFixed(2)} GBP{" "}
+              </span>
+            )}
+            <span
+              style={{ textDecoration: discount ? "line-through" : "none" }}
+            >
+              {(price * cartAmount).toFixed(2)} GBP
             </span>
-          ) : (
-            <span>{(price * cartAmount).toFixed(2)} GBP</span>
-          )}
+          </div>
         </div>
       </div>
     </CheckoutItemWrapper>
@@ -45,6 +41,10 @@ const CheckoutItemWrapper = styled.div`
   img {
     height: 8rem;
     width: 6rem;
+    @media screen and (max-width: 1000px) {
+      height: 6rem;
+      width: 4rem;
+    }
   }
   .item-info {
     padding: 5px 1rem;

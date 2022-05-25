@@ -124,6 +124,8 @@ const LoggedInComponent = styled.div`
   display: flex;
   margin-top: 2rem;
   min-height: 75vh;
+  width: 100%;
+  overflow: hidden;
   @media screen and (max-width: 1000px) {
     flex-direction: column;
   }

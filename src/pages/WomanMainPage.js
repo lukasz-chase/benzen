@@ -13,12 +13,14 @@ import Button from "../components/Button";
 import Carousel from "react-bootstrap/Carousel";
 //router
 import { Link } from "react-router-dom";
+//data
+import { carouselItems } from "../descriptions/womanMainPage";
 
 const WomanMainPage = () => {
   //dispatch
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getItemsByItem("woman", "sweatshirts"));
+    dispatch(getItemsByItem("woman", "sweatshirts", "-1", 1, "clothes"));
   }, [dispatch]);
   //get data back
   const { items, isLoading } = useSelector((state) => state.item);
@@ -37,11 +39,11 @@ const WomanMainPage = () => {
           }
           btnText={"Woman"}
           width={"99%"}
-          link={"/woman/sale/trousers"}
+          link={"/sale/woman/shirts"}
         />
         {!isLoading && (
           <div className="four-cards">
-            {items.slice(0, 4).map((cloth) => (
+            {items.slice(0, 3).map((cloth) => (
               <Card key={cloth._id} item={cloth} />
             ))}
           </div>
@@ -68,44 +70,30 @@ const WomanMainPage = () => {
         )}
         <CarouselStyles>
           <Carousel interval={5000}>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://www.reserved.com/media/SHARED/stronywizerunkowe/reserved/home/content/img/sliders/desktop/baner-full-kurtki-zimowe-ona-1900x950px-200121.jpg"
-                alt="Third slide"
-              />
-              <Carousel.Caption>
-                <h3>puffer jackets</h3>
-                <Link
-                  to="/woman/clothes/outerwear/puffer-jackets"
-                  onClick={() => linkHandler()}
-                >
-                  <Button label="for her" />
-                </Link>
-              </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://www.reserved.com/media/SHARED/stronywizerunkowe/reserved/home/content/img/sliders/desktop/baner-full-zimowe-acc-ladies-1900x950px-021220.jpg"
-                alt="Third slide"
-              />
-              <Carousel.Caption>
-                <h3>winter</h3>
-                <h3>accessories</h3>
-                <div className="buttons">
-                  <Link to="/woman/shoes/boots" onClick={() => linkHandler()}>
-                    <Button label="Shoes" />
-                  </Link>
-                  <Link
-                    to="/woman/accessories/hats"
-                    onClick={() => linkHandler()}
-                  >
-                    <Button label="Hats, scarfs, gloves" />
-                  </Link>
-                </div>
-              </Carousel.Caption>
-            </Carousel.Item>
+            {carouselItems.map((item) => (
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={item.src}
+                  alt={item.title[0].label}
+                />
+                <Carousel.Caption>
+                  {item.title.map((title) => (
+                    <h3 style={{ color: title.color }}>{title.label}</h3>
+                  ))}
+                  <p>{item.subTitle}</p>
+                  {item.links.map((link) => (
+                    <Link
+                      to={link.path}
+                      className="link"
+                      onClick={() => linkHandler()}
+                    >
+                      <Button label={link.label} />
+                    </Link>
+                  ))}
+                </Carousel.Caption>
+              </Carousel.Item>
+            ))}
           </Carousel>
         </CarouselStyles>
         <div className="four-cards"></div>

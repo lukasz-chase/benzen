@@ -183,6 +183,15 @@ const OrdersComponent = styled.div`
       display: flex;
       flex-direction: column;
       margin-top: 1rem;
+      @media screen and (max-width: 1000px) {
+        font-size: 15px;
+      }
+      h2 {
+        @media screen and (max-width: 1000px) {
+          font-size: 15px;
+        }
+      }
+
       .sort-select {
         @media screen and (max-width: 1000px) {
           width: 100%;
@@ -239,6 +248,9 @@ const OrdersComponent = styled.div`
         justify-content: space-between;
         margin: 1rem 0;
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        @media screen and (max-width: 1000px) {
+          justify-content: flex-start;
+        }
         .price {
           width: 50%;
           display: flex;

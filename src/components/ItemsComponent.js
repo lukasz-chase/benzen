@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect, useState } from "react";
 //styling
 import styled from "styled-components";
 //actions
@@ -21,37 +21,22 @@ import ShowLoading from "./ShowLoading";
 const ItemsComponent = () => {
   //state
   const dispatch = useDispatch();
-  const [gender, setGender] = useState("man");
-  const [search, setSearch] = useState("");
-  const [item, setItem] = useState("t-shirts");
-  const [size, setSize] = useState([0, 0]);
-  const [mv, setMV] = useState(false);
-  //useEffects
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
+  const [sort, setSort] = useState({
+    gender: "man",
+    search: "",
+    item: "t-shirts",
+    category: "clothes",
+  });
   useEffect(() => {
-    setMV(window.matchMedia("(min-width: 1000px)").matches);
-  }, [size, mv]);
-  useEffect(() => {
-    if (search) {
-      dispatch(getItemsBySearch(gender, search));
+    if (sort.search) {
+      dispatch(getItemsBySearch(sort.gender, sort.search, 1, "-1"));
     } else {
-      dispatch(getItemsByItem(gender, item, "-1"));
+      dispatch(getItemsByItem(sort.gender, sort.item, "-1", 1, sort.category));
     }
-  }, [dispatch, gender, item, search]);
+  }, [dispatch, sort]);
   //handlers
-  const genderHandler = (e) => {
-    setGender(e.target.value);
-  };
-  const itemHandler = (e) => {
-    setItem(e.target.value);
-  };
+  const handleSort = (e) =>
+    setSort({ ...sort, [e.target.name]: e.target.value });
   const { items, isLoading } = useSelector((state) => state.item);
   return (
     <ItemsComponentView>
@@ -60,21 +45,40 @@ const ItemsComponent = () => {
           <FormControl>
             <InputLabel className="sort-label">Gender</InputLabel>
             <Select
-              value={gender}
-              onChange={genderHandler}
+              value={sort.gender}
+              onChange={(e) => handleSort(e)}
               className="sort-select"
+              name="gender"
             >
               <MenuItem value="man">man</MenuItem>
               <MenuItem value="woman">woman</MenuItem>
             </Select>
           </FormControl>
         </div>
+        <div className="gender-chose">
+          <FormControl>
+            <InputLabel className="sort-label">Gender</InputLabel>
+            <Select
+              value={sort.category}
+              onChange={(e) => handleSort(e)}
+              className="sort-select"
+              name="category"
+            >
+              <MenuItem value="clothes">clothes</MenuItem>
+              <MenuItem value="accessories">accessories</MenuItem>
+              {sort.gender === "woman" && (
+                <MenuItem value="shoes">shoes</MenuItem>
+              )}
+            </Select>
+          </FormControl>
+        </div>
         <div className="items-search">
           <TextField
             label="search"
-            value={search}
+            value={sort.search}
             className="users-input"
-            onChange={(e) => setSearch(e.target.value)}
+            name="search"
+            onChange={(e) => handleSort(e)}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -87,7 +91,12 @@ const ItemsComponent = () => {
         <div className="items-chose">
           <FormControl>
             <InputLabel className="sort-label">Item</InputLabel>
-            <Select value={item} onChange={itemHandler} className="sort-select">
+            <Select
+              value={sort.item}
+              onChange={(e) => handleSort(e)}
+              className="sort-select"
+              name="item"
+            >
               <MenuItem value="shirts">shirts</MenuItem>
               <MenuItem value="sweatshirts">sweatshirts</MenuItem>
               <MenuItem value="sweaters">sweaters</MenuItem>
@@ -168,7 +177,10 @@ const ItemsComponentView = styled.div`
   .items-display {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    margin-top: 1rem;
+    @media screen and (max-width: 1000px) {
+      justify-content: center;
+    }
   }
 `;
 

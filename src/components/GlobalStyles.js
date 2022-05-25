@@ -15,6 +15,12 @@ const GlobalStyles = createGlobalStyle`
         text-decoration:none;
     }
 }
+.pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 1rem;
+    }
 `;
 
 export default GlobalStyles;

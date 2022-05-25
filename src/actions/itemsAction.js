@@ -6,7 +6,6 @@ import {
   START_LOADING_ITEM,
   END_LOADING,
   END_LOADING_ITEM,
-  FETCH_ALL,
   FETCH_BY_ITEM,
   FETCH_BY_SEARCH,
   FETCH_ON_SALE,
@@ -16,23 +15,13 @@ import {
 } from "../constants/actionTypes";
 
 //action creator
-export const getItems = (gender) => async (dispatch) => {
-  try {
-    dispatch({ type: START_LOADING });
-    const { data } = await api.getItems(gender);
-    dispatch({ type: FETCH_ALL, payload: data });
-    dispatch({ type: END_LOADING });
-  } catch (error) {
-    console.log(error);
-  }
-};
 export const getItemsByItem =
-  (gender, item, order, page) => async (dispatch) => {
+  (gender, item, order, page, category) => async (dispatch) => {
     try {
       dispatch({ type: START_LOADING });
       const {
         data: { data, currentPage, numberOfPages },
-      } = await api.getItemsByItem(gender, item, order, page);
+      } = await api.getItemsByItem(gender, item, order, page, category);
       dispatch({
         type: FETCH_BY_ITEM,
         payload: { data, currentPage, numberOfPages },
@@ -42,23 +31,29 @@ export const getItemsByItem =
       console.log(error);
     }
   };
-export const getItemsBySearch = (gender, search) => async (dispatch) => {
-  try {
-    dispatch({ type: START_LOADING });
-    const { data } = await api.getItemsBySearch(gender, search);
-    dispatch({ type: FETCH_BY_SEARCH, payload: data });
-    dispatch({ type: END_LOADING });
-  } catch (error) {
-    console.log(error);
-  }
-};
-export const getItemsOnSale =
-  (gender, item, page, sort) => async (dispatch) => {
+export const getItemsBySearch =
+  (gender, search, page, order) => async (dispatch) => {
     try {
       dispatch({ type: START_LOADING });
       const {
         data: { data, currentPage, numberOfPages },
-      } = await api.getItemsOnSale(gender, item, page, sort);
+      } = await api.getItemsBySearch(gender, search, page, order);
+      dispatch({
+        type: FETCH_BY_SEARCH,
+        payload: { data, currentPage, numberOfPages },
+      });
+      dispatch({ type: END_LOADING });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+export const getItemsOnSale =
+  (gender, item, page, order) => async (dispatch) => {
+    try {
+      dispatch({ type: START_LOADING });
+      const {
+        data: { data, currentPage, numberOfPages },
+      } = await api.getItemsOnSale(gender, item, page, order);
       dispatch({
         type: FETCH_ON_SALE,
         payload: { data, currentPage, numberOfPages },

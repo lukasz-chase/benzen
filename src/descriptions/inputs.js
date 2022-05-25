@@ -10,6 +10,7 @@ export const signIn = [
     name: "password",
     type: "password",
     required: true,
+    useHandler: true,
   },
 ];
 export const signUp = [
@@ -36,6 +37,7 @@ export const signUp = [
     name: "surname",
     type: "surname",
     required: false,
+    useHandler: true,
   },
 ];
 export const accountInputs = [

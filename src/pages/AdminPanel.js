@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { getOrders } from "../actions/ordersAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
-
+//material ui
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 //components
 import UserDetails from "../components/UserDetails";
@@ -17,6 +17,8 @@ import OrdersComponent from "./OrdersComponent";
 import UsersComponent from "../components/UsersComponent";
 //notistack
 import { useSnackbar } from "notistack";
+//data
+import { adminLinks } from "../descriptions/links";
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
@@ -43,20 +45,18 @@ const AdminPanel = () => {
     <AdminPanelComponent>
       <div className="left-side">
         <ul>
-          <Link to="/admin/panel/orders" className="link">
-            <li>Manage Orders</li>
-          </Link>
-          <Link to="/admin/panel/items" className="link">
-            <li>Manage Items</li>
-          </Link>
-          {user.role === "headAdmin" && (
-            <Link to="/admin/panel/users" className="link">
-              <li>Manage users</li>
-            </Link>
-          )}
-          <Link to="/add-item" className="link">
-            <li>Add Item</li>
-          </Link>
+          {adminLinks.map((link) => (
+            <>
+              {link.restriction === user.role && (
+                <Link
+                  to={link.path}
+                  className={link.name === pathName ? "link active" : "link"}
+                >
+                  <li>{link.label}</li>
+                </Link>
+              )}
+            </>
+          ))}
         </ul>
       </div>
       <div className="right-side">
@@ -110,6 +110,10 @@ const AdminPanelComponent = styled.div`
       list-style: none;
       li {
         padding: 1rem 0;
+        text-transform: upperCase;
+      }
+      .active {
+        font-weight: bold;
       }
     }
   }

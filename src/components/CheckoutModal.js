@@ -53,25 +53,31 @@ const CheckoutModal = ({
 };
 
 const ModalComponent = styled.div`
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
-  height: 160vh;
+  height: 100%;
   top: 0;
   left: 0;
+  z-index: 1;
+  @media screen and (max-width: 1000px) {
+    height: 100vh;
+  }
   .modal {
     margin-left: 35%;
-    margin-top: 5%;
+    margin-top: 2%;
     background-color: white;
     width: 28rem;
-    height: 90%;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     @media screen and (max-width: 1000px) {
+      margin-top: 5%;
+      margin-left: 0%;
+      height: 80%;
       width: 100%;
-      margin: 0;
     }
     .header {
       width: 100%;
@@ -94,6 +100,11 @@ const ModalComponent = styled.div`
       height: 25rem;
       width: 20rem;
       margin: 1rem 0;
+      object-fit: cover;
+      @media screen and (max-width: 1000px) {
+        height: 15rem;
+        width: 10rem;
+      }
     }
     .buttons {
       display: flex;

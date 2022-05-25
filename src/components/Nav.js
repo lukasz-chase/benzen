@@ -50,15 +50,20 @@ const Nav = () => {
   const { user, isLoading } = useSelector((state) => state.user);
 
   const manSearchHandler = () => {
-    history.push(`/items/woman/search?searchQuery=${manSearch}`);
-    setNavOpen(false);
-    SetManDropdown(false);
-    setManSearch("");
+    if (manSearch !== "") {
+      setNavOpen(false);
+      SetManDropdown(false);
+      setManSearch("");
+      history.push(`/items/man/search?searchQuery=${manSearch}`);
+    }
   };
   const womanSearchHandler = () => {
-    history.push(`/items/woman/search?searchQuery=${womanSearch}`);
-    SetWomanDropdown(false);
-    setWomanSearch("");
+    if (womanSearch !== "") {
+      setNavOpen(false);
+      SetWomanDropdown(false);
+      setWomanSearch("");
+      history.push(`/items/woman/search?searchQuery=${womanSearch}`);
+    }
   };
   return (
     <NavComponent>
@@ -141,7 +146,7 @@ const Nav = () => {
             <Link
               to="/favorites"
               className="link icon-link"
-              style={{ display: user ? "block" : "none" }}
+              style={{ display: user._id ? "block" : "none" }}
             >
               <Tooltip title="favorites">
                 <IconButton>

@@ -7,22 +7,32 @@ import { getLoggedUser } from "../actions/userActions";
 //components
 import Card from "../components/Card";
 import ShowLoading from "../components/ShowLoading";
-import Pagination from "../components/Pagination";
+//material ui
+import Pagination from "@material-ui/lab/Pagination";
 
 const FavoritesPage = () => {
+  //state
   const { favorites, isLoading, numberOfPages } = useSelector(
     (state) => state.item
   );
+  const { user } = useSelector((state) => state.user);
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
+  //useEffects
   useEffect(() => {
     dispatch(getLoggedUser());
   }, [dispatch]);
-  const { user } = useSelector((state) => state.user);
-  useEffect(() => {
-    dispatch(getFavorites(user._id, page));
-  }, [dispatch, page, user]);
 
+  useEffect(() => {
+    if (user._id) {
+      dispatch(getFavorites(user._id, page));
+    }
+  }, [dispatch, page, user]);
+  //handlers
+  const handlePage = (e, v) => {
+    setPage(v);
+    window.scrollTo(0, 0);
+  };
   return (
     <FavoritesPageComponent>
       <div className="header">
@@ -40,9 +50,10 @@ const FavoritesPage = () => {
             : "Add item to favorites"}
         </div>
         <Pagination
-          page={page}
-          numberOfPages={numberOfPages}
-          setPage={setPage}
+          count={parseInt(page)}
+          page={numberOfPages}
+          onChange={handlePage}
+          className="pagination"
         />
       </ShowLoading>
     </FavoritesPageComponent>
@@ -78,12 +89,11 @@ const FavoritesPageComponent = styled.div`
     }
   }
   .items-display {
-    margin-top: 2rem;
-    width: 90%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
     @media screen and (max-width: 1000px) {
-      width: 100%;
+      justify-content: center;
     }
   }
 `;

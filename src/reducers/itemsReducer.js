@@ -1,7 +1,6 @@
 import {
   CREATE,
   FETCH_ITEM,
-  FETCH_ALL,
   START_LOADING,
   END_LOADING,
   FETCH_BY_ITEM,
@@ -27,7 +26,6 @@ const initState = {
 
 const itemsReducer = (state = initState, action) => {
   switch (action.type) {
-    case FETCH_ALL:
     case FETCH_BY_ITEM:
     case FETCH_BY_SEARCH:
       return {

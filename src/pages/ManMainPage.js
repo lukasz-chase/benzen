@@ -13,12 +13,14 @@ import ImageComponent from "../components/ImageComponent";
 import Button from "../components/Button";
 //bootstrap
 import Carousel from "react-bootstrap/Carousel";
+//data
+import { carouselItems, imageComponent } from "../descriptions/manMainPage";
 
 const ManMainPage = () => {
   //dispatch
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getItemsByItem("man", "puffer-jackets"));
+    dispatch(getItemsByItem("man", "puffer-jackets", "-1", 1, "clothes"));
   }, [dispatch]);
   //get data back
   const { items, isLoading } = useSelector((state) => state.item);
@@ -27,34 +29,24 @@ const ManMainPage = () => {
       <div className="items">
         <CarouselStyles>
           <Carousel interval={5000}>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://www.reserved.com/media/SHARED/stronywizerunkowe/reserved/home/content/img/sliders/desktop/baner-full-SALE-on-1900x950px-231220.jpg"
-                alt="Third slide"
-              />
-              <Carousel.Caption>
-                <h3 style={{ color: "red" }}>sale</h3>
-                <h3 style={{ color: "red" }}>up to 50% off</h3>
-                <Link to="/sale/man/coats" className="link">
-                  <Button label="for him" />
-                </Link>
-              </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://www.reserved.com/media/SHARED/stronywizerunkowe/reserved/home/content/img/sliders/desktop/baner-full-athleisure-on-1900x950px-220121.jpg"
-                alt="Third slide"
-              />
-              <Carousel.Caption>
-                <h3>need warm clothes?</h3>
-                <p>see our offer</p>
-                <Link to="/man/clothes/outerwear/coats" className="link">
-                  <Button label="for him" />
-                </Link>
-              </Carousel.Caption>
-            </Carousel.Item>
+            {carouselItems.map((item) => (
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={item.src}
+                  alt={item.title[0].label}
+                />
+                <Carousel.Caption>
+                  {item.title.map((title) => (
+                    <h3 style={{ color: title.color }}>{title.label}</h3>
+                  ))}
+                  <p>{item.subTitle}</p>
+                  <Link to={item.link.path} className="link">
+                    <Button label={item.link.label} />
+                  </Link>
+                </Carousel.Caption>
+              </Carousel.Item>
+            ))}
           </Carousel>
         </CarouselStyles>
         {!isLoading && (
@@ -65,46 +57,16 @@ const ManMainPage = () => {
           </div>
         )}
         <div className="four-components">
-          <ImageComponent
-            text={"trousers"}
-            textColor={"white"}
-            img={
-              "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-003_5.jpg"
-            }
-            btnText={"for him"}
-            width={"47%"}
-            link={"man/clothes/trousers"}
-          />
-          <ImageComponent
-            text={"jackets"}
-            textColor={"white"}
-            img={
-              "https://www.reserved.com/media/catalog/product/Y/L/YL447-05X-030_2.jpg"
-            }
-            btnText={"for him"}
-            width={"47%"}
-            link={"/man/clothes/outerwear/jackets"}
-          />
-          <ImageComponent
-            text={"sweatshirts"}
-            textColor={"white"}
-            img={
-              "https://www.reserved.com/media/catalog/product/Y/Q/YQ304-82M-001_10.jpg"
-            }
-            btnText={"for him"}
-            width={"47%"}
-            link={"/man/clothes/sweatshirts"}
-          />
-          <ImageComponent
-            text={"t-shirts"}
-            textColor={"white"}
-            img={
-              "https://www.reserved.com/media/catalog/product/2/3/2326C-59X-001_3.jpg"
-            }
-            btnText={"for him"}
-            width={"47%"}
-            link={"/man/clothes/t-shirts"}
-          />
+          {imageComponent.map((image) => (
+            <ImageComponent
+              text={image.label}
+              textColor={image.textColor}
+              img={image.src}
+              btnText={image.btnLabeL}
+              width={image.width}
+              link={image.link}
+            />
+          ))}
         </div>
 
         <ImageComponent
@@ -115,8 +77,8 @@ const ManMainPage = () => {
           }
           btnText={"Shoes"}
           btns={true}
-          secondBtn={"Hats, scarfs, gloves"}
-          width={"99%"}
+          secondBtn={"Hats, scarfs"}
+          width={"100%"}
           link={"/man/accessories/shoes"}
           secondLink={"/man/accessories/hats"}
         />
@@ -144,8 +106,9 @@ const ManMainPageComponent = styled.div`
     .four-components {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-evenly;
-      padding: 0rem 0rem 1rem 0rem;
+      gap: 1rem;
+      justify-content: space-between;
+      padding: 1rem 0rem 1rem 0rem;
     }
   }
 `;

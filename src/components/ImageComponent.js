@@ -21,12 +21,7 @@ const ImageComponent = ({
     window.scrollTo(0, 0);
   };
   return (
-    <ImageComponentStyles
-      style={{
-        backgroundImage: `url(${img})`,
-        width: `${width}`,
-      }}
-    >
+    <ImageComponentStyles img={img} width={width}>
       <span style={{ color: `${textColor}` }}>{text}</span>
       {btns ? (
         <div className="buttons">
@@ -51,11 +46,14 @@ const ImageComponentStyles = styled.div`
   background-size: cover;
   display: flex;
   flex-direction: column;
+  background-image: ${({ img }) => `url(${img})`};
+  width: ${({ width }) => width};
   justify-content: center;
   align-items: center;
   height: 40rem;
   @media screen and (max-width: 1000px) {
     height: 20rem;
+    width: 99%;
     margin: 0.2rem;
   }
   span {

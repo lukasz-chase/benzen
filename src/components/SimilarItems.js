@@ -8,13 +8,13 @@ import { getItemsByItem } from "../actions/itemsAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 
-const SimilarItems = ({ category, gender, pathId, id }) => {
+const SimilarItems = ({ category, gender, pathId, id, item }) => {
   //state
   const dispatch = useDispatch();
   //useEffects
   useEffect(() => {
-    dispatch(getItemsByItem(gender, category, 1));
-  }, [dispatch, gender, pathId, category]);
+    dispatch(getItemsByItem(gender, item, "-1", 1, category));
+  }, [dispatch, gender, pathId, category, item]);
   //get data back
   const { items } = useSelector((state) => state.item);
   return (
@@ -25,9 +25,7 @@ const SimilarItems = ({ category, gender, pathId, id }) => {
             .filter((i) => i._id !== id)
             .slice(0, 9)
             .map((item) => (
-              <div className="card" key={item._id}>
-                <Card key={item._id} item={item} />
-              </div>
+              <Card key={item._id} item={item} />
             ))}
         </>
       )}
@@ -44,16 +42,6 @@ const SimilarItemsComponent = styled.div`
   @media screen and (max-width: 1000px) {
     margin-left: 0rem;
     width: 100%;
-  }
-  .card {
-    width: 21rem;
-    flex: 0 0 auto;
-    margin: 1.5rem 0;
-    border: none;
-    @media screen and (max-width: 1000px) {
-      margin: 0.5rem 0;
-      width: 11rem;
-    }
   }
   ::-webkit-scrollbar {
     height: 10px;

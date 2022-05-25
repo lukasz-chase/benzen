@@ -16,7 +16,6 @@ import {
 
 const CartItem = ({ item }) => {
   const {
-    gender,
     _id,
     name,
     size,
@@ -50,7 +49,7 @@ const CartItem = ({ item }) => {
   return (
     <ItemComponent>
       <div className="item-info">
-        <Link to={`/${gender}/${_id}`}>
+        <Link to={`/items/${_id}`}>
           <div className="image">
             <img src={img} alt={name} />
           </div>

@@ -10,27 +10,29 @@ import { useLocation } from "react-router-dom";
 //icons
 import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import ViewColumnIcon from "@material-ui/icons/ViewColumn";
+//material ui
+import Pagination from "@material-ui/lab/Pagination";
 //components
 import Card from "../components/Card";
 import SortPrice from "../components/SortPrice";
 import WomanLinksComponent from "../components/WomanLinksComponent";
 import ManLinksComponent from "../components/ManLinksComponent";
 import ShowLoading from "../components/ShowLoading";
-import Pagination from "./Pagination";
 
 const ClothesPreviewPage = ({ gender }) => {
   //state
-  const [smallView, setSmallView] = useState(false);
   const [sort, setSort] = useState("1");
   const [page, setPage] = useState("1");
+  const [cardSize, setCardSize] = useState("sm");
   const location = useLocation();
+  const category = location.pathname.split("/")[2];
   const item = location.pathname.split("/")[3];
   //dispatch data
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getItemsByItem(gender, item, sort, page));
-  }, [dispatch, gender, item, sort, page]);
+    dispatch(getItemsByItem(gender, item, sort, page, category));
+  }, [dispatch, gender, item, sort, page, category]);
   //get data back
   const { items, isLoading, numberOfPages } = useSelector(
     (state) => state.item
@@ -38,6 +40,10 @@ const ClothesPreviewPage = ({ gender }) => {
   //handlers
   const handleSort = (event) => {
     setSort(event.target.value);
+  };
+  const handlePage = (e, v) => {
+    setPage(v);
+    window.scrollTo(0, 0);
   };
   return (
     <>
@@ -58,30 +64,37 @@ const ClothesPreviewPage = ({ gender }) => {
               <div className="display-info">
                 {items.length} {items.length === 1 ? "Product" : "Products"}
                 <ViewComfyIcon
-                  className={smallView ? "view-icon" : "view-icon active-icon"}
+                  className={
+                    cardSize === "lg" ? "view-icon" : "view-icon active-icon"
+                  }
                   onClick={() => {
-                    setSmallView(false);
+                    setCardSize("sm");
                   }}
+                  style={{ cursor: "pointer" }}
                 />
                 <ViewColumnIcon
-                  className={smallView ? "view-icon active-icon" : "view-icon"}
+                  className={
+                    cardSize === "lg" ? "view-icon active-icon" : "view-icon"
+                  }
                   onClick={() => {
-                    setSmallView(true);
+                    setCardSize("lg");
                   }}
+                  style={{ cursor: "pointer" }}
                 />
               </div>
             </div>
             <div className="items-display">
               {items?.map((item) => (
-                <Card key={item._id} item={item} />
+                <Card key={item._id} item={item} size={cardSize} />
               ))}
             </div>
+            <Pagination
+              count={parseInt(page)}
+              page={numberOfPages}
+              onChange={handlePage}
+              className="pagination"
+            />
           </div>
-          <Pagination
-            page={page}
-            numberOfPages={numberOfPages}
-            setPage={setPage}
-          />
         </ShowLoading>
       </ClothesPreviewPageComponent>
     </>
@@ -157,6 +170,7 @@ const ClothesPreviewPageComponent = styled.div`
     .items-display {
       display: flex;
       flex-wrap: wrap;
+      margin-top: 1rem;
       @media screen and (max-width: 1000px) {
         justify-content: center;
       }

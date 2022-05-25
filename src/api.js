@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://benzen-server.herokuapp.com" });
+const API = axios.create({ baseURL: "http://localhost:5000" });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
@@ -12,11 +12,14 @@ API.interceptors.request.use((req) => {
 });
 
 //ITEMS
-export const getItems = (gender) => API.get(`/items?gender=${gender}`);
-export const getItemsByItem = (gender, item, order, page) =>
-  API.get(`/items/item/${item}?gender=${gender}&order=${order}&page=${page}`);
-export const getItemsBySearch = (gender, searchQuery) =>
-  API.get(`/items/search?searchQuery=${searchQuery}&gender=${gender}`);
+export const getItemsByItem = (gender, item, order, page, category) =>
+  API.get(
+    `/items/item/${item}?gender=${gender}&order=${order}&page=${page}&category=${category}`
+  );
+export const getItemsBySearch = (gender, searchQuery, page, sort) =>
+  API.get(
+    `/items/search?searchQuery=${searchQuery}&gender=${gender}&order=${sort}&page=${page}`
+  );
 export const getItemsOnSale = (gender, item, page, sort) =>
   API.get(`/items/sale/${item}?gender=${gender}&order=${sort}&page=${page}`);
 export const getFavoriteItems = (id, page) =>

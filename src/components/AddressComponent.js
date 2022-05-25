@@ -149,6 +149,9 @@ const AddressWrapper = styled.div`
   .choose-address {
     display: flex;
     align-items: start;
+    @media screen and (max-width: 1000px) {
+      flex-direction: column;
+    }
     .active-address {
       .checkbox {
         background-color: black;

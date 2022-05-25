@@ -12,13 +12,14 @@ import Card from "../components/Card";
 import SimpleClothesHeader from "../components/SimpleClothesHeader";
 import SaleLinks from "../components/SaleLinks";
 import ShowLoading from "../components/ShowLoading";
-import Pagination from "../components/Pagination";
+//material ui
+import Pagination from "@material-ui/lab/Pagination";
 
 const SalePage = () => {
   const [page, setPage] = useState(1);
   const location = useLocation();
   const dispatch = useDispatch();
-  const [sort, setSort] = useState("");
+  const [sort, setSort] = useState(1);
   const gender = location.pathname.split("/")[2];
   const category = location.pathname.split("/")[3];
   const { numberOfPages, itemsOnSale, isLoading } = useSelector(
@@ -28,6 +29,11 @@ const SalePage = () => {
   useEffect(() => {
     dispatch(getItemsOnSale(gender, category, page, sort));
   }, [dispatch, gender, category, sort, page]);
+  //handlers
+  const handlePage = (e, v) => {
+    setPage(v);
+    window.scrollTo(0, 0);
+  };
   return (
     <>
       {itemsOnSale && (
@@ -50,9 +56,10 @@ const SalePage = () => {
                 ))}
               </div>
               <Pagination
-                page={page}
-                numberOfPages={numberOfPages}
-                setPage={setPage}
+                count={parseInt(page)}
+                page={numberOfPages}
+                onChange={handlePage}
+                className="pagination"
               />
             </div>
           </ShowLoading>
@@ -77,11 +84,11 @@ const SalePageComponent = styled.div`
     width: 80%;
     margin-left: 20%;
     .items-display {
-      width: 90%;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 1rem;
       @media screen and (max-width: 1000px) {
-        align-items: Center;
+        justify-content: center;
       }
     }
     @media screen and (max-width: 1000px) {

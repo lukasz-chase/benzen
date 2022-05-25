@@ -10,7 +10,8 @@ import { Link } from "react-router-dom";
 //components
 import OrderDetails from "../components/OrderDetails";
 import OrderCard from "../components/OrderCard";
-import Pagination from "../components//Pagination";
+//material ui
+import Pagination from "@material-ui/lab/Pagination";
 
 const OrderComponent = ({
   orderDetails,
@@ -20,7 +21,13 @@ const OrderComponent = ({
   snackbarHandler,
   numberOfPages,
 }) => {
+  //state
   const [page, setPage] = useState("1");
+  //handlers
+  const handlePage = (e, v) => {
+    setPage(v);
+    window.scrollTo(0, 0);
+  };
   return (
     <OrdersComponent>
       {orders.length > 0 ? (
@@ -58,7 +65,12 @@ const OrderComponent = ({
           </div>
         </div>
       )}
-      <Pagination page={page} numberOfPages={numberOfPages} setPage={setPage} />
+      <Pagination
+        count={parseInt(page)}
+        page={numberOfPages}
+        onChange={handlePage}
+        className="pagination"
+      />
     </OrdersComponent>
   );
 };
