@@ -100,7 +100,7 @@ const ItemDetailsPage = () => {
             item: {
               cartAmount: 1,
               price,
-              img: images[0].url,
+              img: images[0],
               name,
               size: itemsSize,
               discount,
@@ -129,7 +129,7 @@ const ItemDetailsPage = () => {
                 <div className="images-show">
                   {item.images.map((img, index) => (
                     <SmallImage
-                      url={img.url}
+                      url={img}
                       index={index}
                       key={index}
                       setCurrentIndex={setCurrentIndex}
@@ -142,7 +142,7 @@ const ItemDetailsPage = () => {
                 <div
                   className="main-image"
                   style={{
-                    backgroundImage: `url(${item.images[currentIndex].url})`,
+                    backgroundImage: `url(${item?.images[currentIndex]})`,
                   }}
                   onClick={() => setModal(!modal)}
                 >

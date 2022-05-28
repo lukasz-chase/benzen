@@ -29,7 +29,7 @@ const CheckoutModal = ({
             onClick={() => setCheckoutModal(!checkoutModalOpen)}
           />
         </div>
-        {item.images && <img src={item.images[0].url} alt={item.name} />}
+        {item.images && <img src={item.images[0]} alt={item.name} />}
         <span>
           Size: <b>{itemsSize}</b>
         </span>

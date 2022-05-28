@@ -14,7 +14,6 @@ import { useHistory, useLocation } from "react-router-dom";
 import { createItem, getItem, updateItem } from "../actions/itemsAction";
 //redux
 import { useDispatch } from "react-redux";
-import FileBase from "react-file-base64";
 //components
 import Button from "../components/Button";
 import GoBackButton from "../components/GoBackButton";
@@ -42,7 +41,6 @@ const AddItemPage = () => {
   const [materialPercentage, setMaterialPercentage] = useState("");
   const [lastMaterialId, setLastMaterialId] = useState(0);
   //images
-  const [lastImageId, setLastImageId] = useState(0);
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const dispatch = useDispatch();
@@ -104,13 +102,11 @@ const AddItemPage = () => {
       alert("inputs cant be empty");
     }
   };
-  const imagesHandler = (base64) => {
-    itemData.images.push({
-      id: lastImageId,
-      url: base64,
+  const imagesHandler = (e) => {
+    setItemData({
+      ...itemData,
+      images: [...itemData.images, ...e.target.files],
     });
-    setItemData({ ...itemData, images: itemData.images });
-    setLastImageId(lastImageId + 1);
   };
   const emptyCheck = () => {
     if (
@@ -127,9 +123,23 @@ const AddItemPage = () => {
     } else return false;
   };
   const addItemHandler = () => {
+    const formData = new FormData();
+    formData.append("name", itemData.name);
+    formData.append("gender", itemData.gender);
+    formData.append("category", itemData.category);
+    formData.append("item", itemData.item);
+    formData.append("amount", itemData.amount);
+    formData.append("discount", itemData.discount);
+    formData.append("price", itemData.price);
+    formData.append("priceBeforeDiscount", itemData.priceBeforeDiscount);
+    formData.append("description", itemData.description);
+    formData.append("materials", JSON.stringify(itemData.materials));
+    for (const image of itemData.images) {
+      formData.append("images", image);
+    }
     if (emptyCheck()) {
       clear();
-      dispatch(createItem(itemData, history));
+      dispatch(createItem(formData, history));
     } else {
       alert("Inputs cant be empty");
     }
@@ -147,7 +157,7 @@ const AddItemPage = () => {
       {isAdmin(user) ? (
         <>
           <GoBackButton />
-          <div className="inputs">
+          <form className="inputs" encType="multipart/form-data">
             <div className="two-inputs">
               <div className="option">
                 Items Gender:
@@ -398,23 +408,25 @@ const AddItemPage = () => {
             <div className="option">
               Images:
               <div className="image-add">
-                <FileBase
+                <input
+                  onChange={imagesHandler}
                   type="file"
+                  accept="image/*"
+                  filename="images"
                   multiple={true}
-                  onDone={([{ base64 }]) => imagesHandler(base64)}
                 />
               </div>
               <div className="images-display">
                 {itemData.images.map((image) => (
                   <div className="imageWrapper" key={image.id}>
-                    <img src={image.url} alt="item" className="image" />
+                    <span>{image.name}</span>
                     <span
                       className="image-remove"
                       onClick={() =>
                         setItemData({
                           ...itemData,
                           images: itemData.images.filter(
-                            (deleteImage) => deleteImage.id !== image.id
+                            (deleteImage) => deleteImage.name !== image.name
                           ),
                         })
                       }
@@ -430,8 +442,9 @@ const AddItemPage = () => {
               onClick={() => (id ? editItemHandler() : addItemHandler())}
               variant="black"
               size="lg"
+              type="submit"
             />
-          </div>
+          </form>
         </>
       ) : (
         "You can`t access this page"

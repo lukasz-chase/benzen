@@ -25,9 +25,7 @@ const FullImageModal = ({
             : setCurrentIndex((currentIndex - 1) % item.images.length)
         }
       />
-      {item.images && (
-        <img src={item.images[currentIndex].url} alt={item.name} />
-      )}
+      {item.images && <img src={item.images[currentIndex]} alt={item.name} />}
       <ArrowForwardIosIcon
         className="arrows right-arrow"
         onClick={() => setCurrentIndex((currentIndex + 1) % item.images.length)}

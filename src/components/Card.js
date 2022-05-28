@@ -57,10 +57,10 @@ const Card = ({ item, adminPanel, size = "sm" }) => {
         onClick={() => window.scrollTo(0, 0)}
       >
         <img
-          src={item?.images[0]?.url}
+          src={item?.images[0]}
           alt={item.name}
-          onMouseOver={(e) => (e.currentTarget.src = `${item?.images[1]?.url}`)}
-          onMouseOut={(e) => (e.currentTarget.src = `${item?.images[0]?.url}`)}
+          onMouseOver={(e) => (e.currentTarget.src = `${item?.images[1]}`)}
+          onMouseOut={(e) => (e.currentTarget.src = `${item?.images[0]}`)}
         />
       </Link>
       <div className="name">{item.name}</div>

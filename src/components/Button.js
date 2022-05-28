@@ -2,13 +2,14 @@ import React from "react";
 //styling
 import styled from "styled-components";
 
-const Button = ({ label, variant, size, Icon, disabled, onClick }) => {
+const Button = ({ label, variant, size, Icon, disabled, onClick, type }) => {
   return (
     <ButtonWrapper
       variant={variant}
       size={size}
       disabled={disabled}
       onClick={onClick}
+      type={type}
     >
       {Icon}
       {label}
