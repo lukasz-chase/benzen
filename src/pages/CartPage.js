@@ -70,7 +70,7 @@ const CartPage = () => {
         return b.discount
           ? (a += b.priceBeforeDiscount * b.cartAmount)
           : (a += b.price * b.cartAmount);
-      }, 0)
+      }, false)
     );
   }, [cart]);
   useEffect(() => {

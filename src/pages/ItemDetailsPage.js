@@ -34,7 +34,8 @@ import ShowLoading from "../components/ShowLoading";
 import Button from "../components/Button";
 //logic
 import { isAdmin } from "../components/Nav";
-
+//constants
+import { ADD_TO_CART, INCREASE_CART_AMOUNT } from "../constants/actionTypes";
 const ItemDetailsPage = () => {
   //state
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -77,9 +78,9 @@ const ItemDetailsPage = () => {
       item.size = itemsSize;
       if (found) {
         dispatch({
-          type: "INCREASE",
+          type: INCREASE_CART_AMOUNT,
           payload: {
-            id: found.id,
+            id: found._id,
             size: found.size,
             amount: found.cartAmount,
           },
@@ -95,7 +96,7 @@ const ItemDetailsPage = () => {
           gender,
         } = item;
         dispatch({
-          type: "ADD_TO_CART",
+          type: ADD_TO_CART,
           payload: {
             item: {
               cartAmount: 1,

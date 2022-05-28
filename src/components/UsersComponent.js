@@ -85,7 +85,7 @@ const UsersComponent = ({ setUserId }) => {
           {users?.length > 0 &&
             users?.map((user, index) => (
               <tr
-                key={user.id}
+                key={user._id}
                 style={{
                   backgroundColor: index % 2 ? "black" : "white",
                   color: index % 2 ? "white" : "black",

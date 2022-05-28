@@ -175,7 +175,7 @@ const CheckoutPage = () => {
             </AccordionSummary>
             <AccordionDetails className="accordion-detail">
               {cart.map((item) => (
-                <CheckoutItem key={item.id} item={item} />
+                <CheckoutItem key={item._id} item={item} />
               ))}
             </AccordionDetails>
           </Accordion>
