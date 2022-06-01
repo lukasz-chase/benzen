@@ -89,14 +89,12 @@ const OrderDetails = ({ snackbarHandler }) => {
                 {order?.cart?.map((item) => (
                   <div className="item" key={item._id}>
                     <div className="left-item">
-                      <Link to={`/${item.category}/${item._id}`}>
+                      <Link to={`/items/${item._id}`}>
                         <img src={item.img} alt={item.name} />
                       </Link>
                       <div className="item-details">
-                        <Link
-                          to={`/${item.category}/${item._id}`}
-                          className="link"
-                        >
+                        console.log(item)
+                        <Link to={`/items/${item._id}`} className="link">
                           <h3>{item.name}</h3>
                         </Link>
                         <span>size: {item.size}</span>

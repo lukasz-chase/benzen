@@ -62,20 +62,12 @@ function App() {
       <Route path="/checkout/cart" exact>
         <CartPage />
       </Route>
-      <Route
-        path={[
-          "/man/clothes/:id",
-          "/man/clothes/outerwear/:id",
-          "/man/accessories/:id",
-        ]}
-        exact
-      >
+      <Route path={["/man/clothes/:id", "/man/accessories/:id"]} exact>
         <ManClothesPage />
       </Route>
       <Route
         path={[
           "/woman/clothes/:id",
-          "/woman/clothes/outerwear/:id",
           "/woman/accessories/:id",
           "/woman/shoes/:id",
         ]}
