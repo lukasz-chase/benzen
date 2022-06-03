@@ -1,4 +1,6 @@
-you can check it live on: https://benzen.vercel.app/
+you can check it live on: https://benzen.netlify.app/
+
+backend files - https://github.com/luki752/benzen-server
 
 To run this app on your computer follow these steps:
 
@@ -11,9 +13,7 @@ To run this app on your computer follow these steps:
 Benzen is my biggest project yet, I used here technologies like: react, react-redux, styled-components, material ui, bootstrap and I created my own data base using json-server.
 This website is fully responsible, works on big screens as well as on smaller screens.
 
-headAdmin account:
-login: admin@admin.com
-password: admin
+If you want to check admins panel dm me for credentials
 
 ![1](https://user-images.githubusercontent.com/58302409/109859266-0a354c80-7c5d-11eb-843e-c561deb74de5.PNG)
 ![2](https://user-images.githubusercontent.com/58302409/109859343-22a56700-7c5d-11eb-913b-f942a0d66c8a.PNG)
