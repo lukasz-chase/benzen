@@ -15,36 +15,52 @@ const FullImageModal = ({
 }) => {
   //state
   return (
-    <ModalComponent style={{ display: modal ? "flex" : "none" }}>
-      <CloseIcon className="close-modal" onClick={() => setModal(!modal)} />
-      <ArrowBackIosIcon
-        className="arrows left-arrow"
-        onClick={() =>
-          currentIndex - 1 === -1
-            ? setCurrentIndex(item.images.length - 1)
-            : setCurrentIndex((currentIndex - 1) % item.images.length)
-        }
-      />
-      {item.images && <img src={item.images[currentIndex]} alt={item.name} />}
-      <ArrowForwardIosIcon
-        className="arrows right-arrow"
-        onClick={() => setCurrentIndex((currentIndex + 1) % item.images.length)}
-      />
+    <ModalComponent modal={modal}>
+      <div className="modal" style={{ display: modal ? "flex" : "none" }}>
+        <CloseIcon className="close-modal" onClick={() => setModal(!modal)} />
+        <ArrowBackIosIcon
+          className="arrows left-arrow"
+          onClick={() =>
+            currentIndex - 1 === -1
+              ? setCurrentIndex(item.images.length - 1)
+              : setCurrentIndex((currentIndex - 1) % item.images.length)
+          }
+        />
+        {item.images && <img src={item.images[currentIndex]} alt={item.name} />}
+        <ArrowForwardIosIcon
+          className="arrows right-arrow"
+          onClick={() =>
+            setCurrentIndex((currentIndex + 1) % item.images.length)
+          }
+        />
+      </div>
     </ModalComponent>
   );
 };
 
 const ModalComponent = styled.div`
+  background: white;
+  display: ${({ modal }) => (modal ? "flex" : "none")};
+  position: fixed;
+  overflow: hidden;
   width: 100%;
-  height: fit-content;
-  position: absolute;
+  height: 100%;
   top: 0;
   left: 0;
-  background-color: white;
-  display: flex;
-  justify-content: center;
+  z-index: 50;
+  max-height: 100%;
+  overflow-y: auto;
+  .modal {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+  }
   img {
     width: 80%;
+    object-fit: contain;
     z-index: 4;
   }
   .close-modal {

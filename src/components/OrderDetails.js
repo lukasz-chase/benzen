@@ -93,7 +93,6 @@ const OrderDetails = ({ snackbarHandler }) => {
                         <img src={item.img} alt={item.name} />
                       </Link>
                       <div className="item-details">
-                        console.log(item)
                         <Link to={`/items/${item._id}`} className="link">
                           <h3>{item.name}</h3>
                         </Link>
