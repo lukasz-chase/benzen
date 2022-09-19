@@ -1,6 +1,6 @@
 import React from "react";
 //router
-import { useLocation } from "react-router-dom";
+import { useRouter } from "next/router";
 //styling
 import styled from "styled-components";
 //components
@@ -14,9 +14,9 @@ import {
 } from "../descriptions/links";
 
 const WomanLinksComponent = ({ gender }) => {
-  const location = useLocation();
-  const pathItem = location.pathname.split("/")[3];
-  const category = location.pathname.split("/")[2];
+  const router = useRouter();
+  const pathItem = router.asPath.split("/")[3];
+  const category = router.asPath.split("/")[2];
   return (
     <WomanView>
       <ul>

@@ -2,41 +2,24 @@ import React from "react";
 //styling
 import styled from "styled-components";
 //router
-import { Link } from "react-router-dom";
+import Link from "next/link";
 //components
 import Button from "../components/Button";
 
-const ImageComponent = ({
-  width,
-  text,
-  textColor,
-  img,
-  btnText,
-  btns,
-  secondBtn,
-  link,
-  secondLink,
-}) => {
+const ImageComponent = ({ width, text, textColor, img, buttons }) => {
   const linkHandler = () => {
     window.scrollTo(0, 0);
   };
   return (
     <ImageComponentStyles img={img} width={width}>
       <span style={{ color: `${textColor}` }}>{text}</span>
-      {btns ? (
-        <div className="buttons">
-          <Link to={link} className="link" onClick={() => linkHandler()}>
-            <Button label={btnText} />
+      <div className="buttons">
+        {buttons.map(({ link, text }) => (
+          <Link href={link} className="link">
+            <Button label={text} onClick={() => linkHandler()} />
           </Link>
-          <Link to={secondLink} className="link" onClick={() => linkHandler()}>
-            <Button label={secondBtn} />
-          </Link>
-        </div>
-      ) : (
-        <Link to={link} className="link" onClick={() => linkHandler()}>
-          <Button label={btnText} />
-        </Link>
-      )}
+        ))}
+      </div>
     </ImageComponentStyles>
   );
 };

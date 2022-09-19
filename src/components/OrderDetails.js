@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 //styling
 import styled from "styled-components";
 //router
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router";
+import Link from "next/link";
+import { useRouter } from "next/router";
 //material ui
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -21,9 +21,9 @@ import moment from "moment";
 
 const OrderDetails = ({ snackbarHandler }) => {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const pathId = location.pathname.split("/")[4];
-  const adminPanel = location.pathname.split("/")[1];
+  const router = useRouter();
+  const pathId = router.pathname.split("/")[4];
+  const adminPanel = router.pathname.split("/")[1];
   useEffect(() => {
     dispatch(getOrder(pathId));
   }, [pathId, dispatch]);
@@ -78,7 +78,7 @@ const OrderDetails = ({ snackbarHandler }) => {
                 <span>
                   User-id: {order.userId}{" "}
                   <Link
-                    to={`/admin/panel/users/${order.userId}`}
+                    href={`/admin/panel/users/${order.userId}`}
                     className="link"
                   >
                     <Button label="User Details" variant="black" />
@@ -89,11 +89,11 @@ const OrderDetails = ({ snackbarHandler }) => {
                 {order?.cart?.map((item) => (
                   <div className="item" key={item._id}>
                     <div className="left-item">
-                      <Link to={`/items/${item._id}`}>
+                      <Link href={`/items/${item._id}`}>
                         <img src={item.img} alt={item.name} />
                       </Link>
                       <div className="item-details">
-                        <Link to={`/items/${item._id}`} className="link">
+                        <Link href={`/items/${item._id}`} className="link">
                           <h3>{item.name}</h3>
                         </Link>
                         <span>size: {item.size}</span>

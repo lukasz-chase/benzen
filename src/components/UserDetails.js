@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 //styling
 import styled from "styled-components";
 //router
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router";
+import Link from "next/link";
+import { useRouter } from "next/router";
 //material ui
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -21,8 +21,8 @@ import moment from "moment";
 
 const User = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const pathId = location.pathname.split("/")[4];
+  const router = useRouter();
+  const pathId = router.pathname.split("/")[4];
   useEffect(() => {
     dispatch(getUserById(pathId));
     dispatch(getUserOrders(pathId));
@@ -74,7 +74,10 @@ const User = () => {
                 <span>
                   {(order.cartPrice + order.deliveryPrice).toFixed(2)} GBP
                 </span>
-                <Link to={`/admin/panel/orders/${order._id}`} className="link">
+                <Link
+                  href={`/admin/panel/orders/${order._id}`}
+                  className="link"
+                >
                   <span>Details</span>
                 </Link>
               </div>

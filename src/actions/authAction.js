@@ -6,31 +6,33 @@ import {
 } from "../constants/actionTypes";
 import * as api from "../api";
 
-export const signin = (formData, history) => async (dispatch) => {
+export const signin = (formData, router) => async (dispatch) => {
   try {
     const { data } = await api.signIn(formData);
     dispatch({ type: SIGN_IN_ERROR, payload: undefined });
     dispatch({ type: AUTH, data });
-    history.push("/");
-    window.location.reload();
+    router.push("/");
+    setTimeout(() => {
+      router.reload(window.location.pathname);
+    }, 50);
   } catch (error) {
     dispatch({ type: SIGN_IN_ERROR, payload: error.response.data.message });
     console.log(error);
   }
 };
-export const signup = (formData, history) => async (dispatch) => {
+export const signup = (formData, router) => async (dispatch) => {
   try {
     const { data } = await api.signUp(formData);
     dispatch({ type: SIGN_UP_ERROR, payload: undefined });
     dispatch({ type: AUTH, data });
-    history.push("/customer/account/login");
+    router.push("/customer/account/login");
   } catch (error) {
     dispatch({ type: SIGN_UP_ERROR, payload: error.response.data.message });
     console.log(error);
   }
 };
-export const logOut = (history) => async (dispatch) => {
+export const logOut = (router) => async (dispatch) => {
   dispatch({ type: LOGOUT });
-  history.push("/");
+  router.push("/");
   window.location.reload();
 };

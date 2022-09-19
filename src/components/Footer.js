@@ -17,7 +17,7 @@ import InstagramIcon from "@material-ui/icons/Instagram";
 import PinterestIcon from "@material-ui/icons/Pinterest";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 //router
-import { Link } from "react-router-dom";
+import Link from "next/link";
 //components
 import Button from "../components/Button";
 
@@ -50,25 +50,12 @@ const Footer = () => {
           <ul>
             <li>my account</li>
 
-            <li>
-              <Link
-                to="/customer/account/info"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                Account settings
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                to="/customer/account/info"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                Change password
-              </Link>
-            </li>
+            <Link href="/customer/account/info" className="link">
+              <li onClick={() => linkHandler()}>Account settings</li>
+            </Link>
+            <Link href="/customer/account/info" className="link">
+              <li onClick={() => linkHandler()}>Change password</li>
+            </Link>
           </ul>
           <ul className="second-list">
             <li>company</li>

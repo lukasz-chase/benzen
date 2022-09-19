@@ -6,7 +6,7 @@ import { getItemsByItem } from "../actions/itemsAction";
 //styling
 import styled from "styled-components";
 //router
-import { useLocation } from "react-router-dom";
+import { useRouter } from "next/router";
 //icons
 import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import ViewColumnIcon from "@material-ui/icons/ViewColumn";
@@ -24,9 +24,10 @@ const ClothesPreviewPage = ({ gender }) => {
   const [sort, setSort] = useState("1");
   const [page, setPage] = useState("1");
   const [cardSize, setCardSize] = useState("sm");
-  const location = useLocation();
-  const category = location.pathname.split("/")[2];
-  const item = location.pathname.split("/")[3];
+  const router = useRouter();
+  const category = router.asPath.split("/")[2];
+  const item = router.asPath.split("/")[3];
+
   //dispatch data
   const dispatch = useDispatch();
 

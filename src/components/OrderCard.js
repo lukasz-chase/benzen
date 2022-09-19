@@ -3,13 +3,13 @@ import React from "react";
 import styled from "styled-components";
 //moment
 import moment from "moment";
-//react router
-import { useHistory } from "react-router-dom";
+//next router
+import { useRouter } from "next/router";
 
 const OrderCard = ({ order, path }) => {
-  const history = useHistory();
+  const router = useRouter();
   const orderDetailsHandler = (id) => {
-    history.push(`${path}/${id}`);
+    router.push(`${path}/${id}`);
     window.scrollTo(0, 0);
   };
   const { cartPrice, deliveryPrice, _id, cart, createdAt, status } = order;

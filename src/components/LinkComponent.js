@@ -2,7 +2,7 @@ import React from "react";
 //styled
 import styled from "styled-components";
 //router
-import { Link } from "react-router-dom";
+import Link from "next/link";
 const LinkComponent = ({ gender, item, category, text, linkItem }) => {
   //handlers
   const linkHandler = () => {
@@ -10,17 +10,20 @@ const LinkComponent = ({ gender, item, category, text, linkItem }) => {
   };
   return (
     <LinkComponentView>
-      <Link
-        to={`/${gender}/${category}/${linkItem}`}
-        className="link"
-        onClick={() => linkHandler()}
-      >
-        <li className={item === linkItem ? "active-list" : ""}>{text}</li>
+      <Link href={`/${gender}/${category}/${linkItem}`} className="link">
+        <li
+          className={item === linkItem ? "active-list" : ""}
+          onClick={() => linkHandler()}
+        >
+          {text}
+        </li>
       </Link>
     </LinkComponentView>
   );
 };
 
-const LinkComponentView = styled.div``;
+const LinkComponentView = styled.div`
+  cursor: pointer;
+`;
 
 export default LinkComponent;

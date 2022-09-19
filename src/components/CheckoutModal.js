@@ -5,7 +5,7 @@ import styled from "styled-components";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import CloseIcon from "@material-ui/icons/Close";
 //link
-import { Link } from "react-router-dom";
+import Link from "next/link";
 //components
 import Button from "../components/Button";
 
@@ -35,12 +35,12 @@ const CheckoutModal = ({
         </span>
         <span>{item.price} GBP</span>
         <div className="buttons">
-          <Link
-            to="/checkout/cart"
-            className="link"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <Button variant={"black"} label="Go to your cart" />
+          <Link href="/checkout/cart" className="link">
+            <Button
+              variant={"black"}
+              label="Go to your cart"
+              onClick={() => window.scrollTo(0, 0)}
+            />
           </Link>
           <Button
             label="Continue Shopping"

@@ -4,7 +4,7 @@ import styled from "styled-components";
 //axios
 import axios from "axios";
 //location
-import { Link } from "react-router-dom";
+import Link from "next/link";
 //material ui
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 
@@ -31,7 +31,7 @@ const SaleLinks = ({ gender, category, hamburger, setNavOpen, navOpen }) => {
       {hamburger ? (
         <>
           {itemsList.map((item) => (
-            <Link to={`/sale/${gender}/${item}`} className="link" key={item}>
+            <Link href={`/sale/${gender}/${item}`} className="link" key={item}>
               <AccordionDetails
                 onClick={() => linkHandler()}
                 style={{ color: "red" }}
@@ -50,15 +50,11 @@ const SaleLinks = ({ gender, category, hamburger, setNavOpen, navOpen }) => {
           }}
         >
           {itemsList.map((item) => (
-            <Link
-              to={`/sale/${gender}/${item}`}
-              className="link"
-              key={item}
-              onClick={() => linkHandler()}
-            >
+            <Link href={`/sale/${gender}/${item}`} className="link" key={item}>
               <li
                 className={category === item ? "active-list" : ""}
                 style={{ color: category ? "black" : "red" }}
+                onClick={() => linkHandler()}
               >
                 {item}
               </li>

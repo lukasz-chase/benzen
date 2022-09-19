@@ -82,21 +82,21 @@ export const updateRole = (id, role) => async (dispatch) => {
     console.log(error);
   }
 };
-export const updatePassword = (id, password, history) => async (dispatch) => {
+export const updatePassword = (id, password, router) => async (dispatch) => {
   try {
     const { data } = await api.updatePassword(id, password);
     dispatch({ type: UPDATE_USER, payload: data });
     dispatch({ type: LOGOUT });
-    history.push("/");
+    router.push("/");
   } catch (error) {
     console.log(error);
   }
 };
-export const deleteAccount = (id, history) => async (dispatch) => {
+export const deleteAccount = (id, router) => async (dispatch) => {
   try {
     await api.deleteAccount(id);
     dispatch({ type: LOGOUT });
-    history.push("/");
+    router.push("/");
   } catch (error) {
     console.log(error);
   }

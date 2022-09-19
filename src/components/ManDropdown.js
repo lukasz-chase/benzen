@@ -2,7 +2,7 @@ import React from "react";
 //styling
 import styled from "styled-components";
 //router
-import { Link } from "react-router-dom";
+import Link from "next/link";
 //material ui
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -30,7 +30,7 @@ const ManDropdown = ({
         <ul>
           <li className="list-header">Clothes</li>
           {ManClothesLinks.map((item) => (
-            <Link to={item.path} className="link" key={item.title}>
+            <Link href={item.path} className="link" key={item.title}>
               <li>{item.title}</li>
             </Link>
           ))}
@@ -38,7 +38,7 @@ const ManDropdown = ({
         <ul>
           <li className="list-header">Accessories</li>
           {ManAccessoriesLinks.map((accessory) => (
-            <Link to={accessory.path} className="link" key={accessory.title}>
+            <Link href={accessory.path} className="link" key={accessory.title}>
               <li>{accessory.title}</li>
             </Link>
           ))}

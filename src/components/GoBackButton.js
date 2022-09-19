@@ -2,18 +2,18 @@ import React from "react";
 //icons
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 //link
-import { useHistory } from "react-router-dom";
+import { useRouter } from "next/router";
 //component
 import Button from "../components/Button";
 
 const GoBackButton = () => {
-  const history = useHistory();
+  const router = useRouter();
   return (
     <Button
       variant="black"
       label="Go back to admins panel"
       Icon={<ArrowLeftIcon />}
-      onClick={() => history.goBack()}
+      onClick={() => router.go(-1)}
       size="lg"
     />
   );

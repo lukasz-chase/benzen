@@ -22,7 +22,7 @@ const ButtonWrapper = styled.div`
   border-radius: 5px;
   pointer-events: ${({ disabled }) => (disabled ? "disabled" : "all")};
   height: ${({ size }) => (size === "lg" ? "6vh" : "4vh")};
-  min-width: ${({ size }) => (size === "lg" ? "20vw" : "12vw")};
+  min-width: ${({ size }) => (size === "lg" ? "20vw" : "16vw")};
   max-width: fit-content;
   font-size: ${({ size }) => (size === "lg" ? "20px" : "13px")};
   display: flex;

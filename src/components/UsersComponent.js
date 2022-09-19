@@ -15,12 +15,12 @@ import { getUsers } from "../actions/userActions";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //router
-import { useHistory } from "react-router-dom";
+import { useRouter } from "next/router";
 //material ui
 import Pagination from "@material-ui/lab/Pagination";
 
 const UsersComponent = ({ setUserId }) => {
-  const history = useHistory();
+  const router = useRouter();
   const { users, numberOfPages } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [role, setRole] = useState("customer");
@@ -31,7 +31,7 @@ const UsersComponent = ({ setUserId }) => {
     dispatch(getUsers(search, role, page));
   }, [dispatch, search, role, page]);
   const userDetailsHandler = (id) => {
-    history.push(`/admin/panel/users/${id}`);
+    router.push(`/admin/panel/users/${id}`);
     setUserId(id);
     window.scrollTo(0, 0);
   };

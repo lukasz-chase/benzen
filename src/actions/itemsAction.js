@@ -74,30 +74,30 @@ export const getItem = (id) => async (dispatch) => {
   }
 };
 
-export const createItem = (item, history) => async (dispatch) => {
+export const createItem = (item, router) => async (dispatch) => {
   try {
     const { data } = await api.createItem(item);
     dispatch({ type: CREATE, payload: data });
-    history.push(`/items/${data._id}/admin`);
+    router.push(`/items/${data._id}/admin`);
   } catch (error) {
     console.log(error);
   }
 };
 
-export const updateItem = (id, item, history) => async (dispatch) => {
+export const updateItem = (id, item, router) => async (dispatch) => {
   try {
     const { data } = await api.updateItem(id, item);
     dispatch({ type: UPDATE_ITEM, payload: data });
-    history.push(`/items/${data._id}`);
+    router.push(`/items/${data._id}`);
   } catch (error) {
     console.log(error);
   }
 };
-export const deleteItem = (id, history) => async (dispatch) => {
+export const deleteItem = (id, router) => async (dispatch) => {
   try {
     await api.deleteItem(id);
     dispatch({ type: DELETE, payload: id });
-    history.goBack();
+    router.go(-1);
   } catch (error) {
     console.log(error);
   }

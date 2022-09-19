@@ -2,7 +2,7 @@ import React from "react";
 //styling
 import styled from "styled-components";
 //router
-import { Link } from "react-router-dom";
+import Link from "next/link";
 //redux
 import { useDispatch } from "react-redux";
 //type
@@ -12,20 +12,20 @@ import Button from "../components/Button";
 //redux
 import { useSelector } from "react-redux";
 //router
-import { useHistory } from "react-router-dom";
+import { useRouter } from "next/router";
 
-const LoginDropdown = ({ loginDropdownOpen, setLoginDropdown, mv }) => {
+const LoginDropdown = ({ loginDropdownOpen, setLoginDropdown }) => {
   //state
   const { user, isLoading } = useSelector((state) => state.user);
-  const history = useHistory();
+  const router = useRouter();
   const dispatch = useDispatch();
   //handlers
   const LogOutHandler = () => {
-    dispatch(logOut(history));
+    dispatch(logOut(router));
   };
   return (
     <LoginDropdownComponent
-      style={{ display: loginDropdownOpen && mv.matches ? "flex" : "none" }}
+      loginDropdownOpen={loginDropdownOpen}
       onMouseEnter={() => setLoginDropdown(true)}
       onMouseLeave={() => setLoginDropdown(false)}
     >
@@ -46,14 +46,14 @@ const LoginDropdown = ({ loginDropdownOpen, setLoginDropdown, mv }) => {
           </div>
 
           <div className="bottom-login">
-            <Link to="/customer/account/orders" className="link">
-              <span>orders</span>
+            <Link href="/account/orders">
+              <span className="link">orders</span>
             </Link>
-            <Link to="/customer/account/address" className="link">
-              <span>address data</span>
+            <Link href="/account/address">
+              <span className="link">address data</span>
             </Link>
-            <Link to="/customer/account/info" className="link">
-              <span>account info</span>
+            <Link href="/account/info">
+              <span className="link">account info</span>
             </Link>
           </div>
         </>
@@ -61,7 +61,7 @@ const LoginDropdown = ({ loginDropdownOpen, setLoginDropdown, mv }) => {
         <>
           <div className="upper-login">
             <span>Do you have an account?</span>
-            <Link to="/customer/account/login" className="link">
+            <Link href="/customer/account/login" className="link">
               <Button label="Log in" />
             </Link>
           </div>
@@ -72,7 +72,7 @@ const LoginDropdown = ({ loginDropdownOpen, setLoginDropdown, mv }) => {
               It'll take a short time and you'll gain access to multiple
               features
             </p>
-            <Link to="/customer/account/register" className="link">
+            <Link href="/customer/account/register" className="link">
               <Button label="Register" />
             </Link>
           </div>
@@ -91,6 +91,9 @@ const LoginDropdownComponent = styled.div`
   z-index: 10;
   display: flex;
   flex-direction: column;
+  display: ${({ loginDropdownOpen }) => (loginDropdownOpen ? "flex" : "none")};
+  @media screen and (max-width: 1000px) {
+  }
   .upper-login {
     padding: 2rem;
     font-size: 1rem;

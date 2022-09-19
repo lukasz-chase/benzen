@@ -2,7 +2,7 @@ import React from "react";
 //styled
 import styled from "styled-components";
 //router
-import { Link } from "react-router-dom";
+import Link from "next/link";
 const CategoryLinkComponent = ({
   gender,
   item,
@@ -16,15 +16,12 @@ const CategoryLinkComponent = ({
   };
   return (
     <CategoryLinkView>
-      <Link
-        to={`/${gender}/${linkCategory}/${item}`}
-        className="link"
-        onClick={() => linkHandler()}
-      >
+      <Link href={`/${gender}/${linkCategory}/${item}`} className="link">
         <li
           className={
             category === linkCategory ? "category active-list" : "category"
           }
+          onClick={() => linkHandler()}
         >
           {text}
         </li>
@@ -33,6 +30,8 @@ const CategoryLinkComponent = ({
   );
 };
 
-const CategoryLinkView = styled.div``;
+const CategoryLinkView = styled.div`
+  cursor: pointer;
+`;
 
 export default CategoryLinkComponent;

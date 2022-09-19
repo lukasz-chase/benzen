@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 //styling
 import styled from "styled-components";
 //router
-import { Link, useHistory } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/router";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 //material ui
@@ -39,11 +40,9 @@ const Nav = () => {
   //search
   const [manSearch, setManSearch] = useState("");
   const [womanSearch, setWomanSearch] = useState("");
-  //size
-  const mv = window.matchMedia("(min-width: 1000px)");
   //selector etc
   const { cart } = useSelector((state) => state.cart);
-  const history = useHistory();
+  const router = useRouter();
   useEffect(() => {
     dispatch(getLoggedUser());
   }, [dispatch]);
@@ -54,7 +53,7 @@ const Nav = () => {
       setNavOpen(false);
       SetManDropdown(false);
       setManSearch("");
-      history.push(`/items/man/search?searchQuery=${manSearch}`);
+      router.push(`/items/man/search?searchQuery=${manSearch}`);
     }
   };
   const womanSearchHandler = () => {
@@ -62,7 +61,7 @@ const Nav = () => {
       setNavOpen(false);
       SetWomanDropdown(false);
       setWomanSearch("");
-      history.push(`/items/woman/search?searchQuery=${womanSearch}`);
+      router.push(`/items/woman/search?searchQuery=${womanSearch}`);
     }
   };
   return (
@@ -72,17 +71,15 @@ const Nav = () => {
           <li>
             <MenuIcon onClick={() => setNavOpen(!navOpen)} />
           </li>
-          <li className="nav-logo">
-            <Link to="/" className="link">
-              benzen
-            </Link>
-          </li>
+          <Link href="/" className="link">
+            <li className="nav-logo">benzen</li>
+          </Link>
         </ul>
       </div>
       <div className="nav-middle-menu">
         <ul>
           <li>
-            <Link to="/sale" className="link">
+            <Link href="/sale" className="link">
               <Button
                 className="gender-button"
                 style={{
@@ -97,7 +94,7 @@ const Nav = () => {
             </Link>
           </li>
           <li>
-            <Link to="/woman" className="link">
+            <Link href="/woman" className="link">
               <Button
                 className="gender-button"
                 style={{
@@ -111,7 +108,7 @@ const Nav = () => {
             </Link>
           </li>
           <li>
-            <Link to="/man" className="link">
+            <Link href="/man" className="link">
               <Button
                 className="gender-button"
                 style={{
@@ -131,7 +128,7 @@ const Nav = () => {
           <li>
             {" "}
             {isAdmin(user) && (
-              <Link to="/admin/panel/orders" className="link icon-link">
+              <Link href="/admin/panel/orders" className="link icon-link">
                 <Tooltip title="admin panel">
                   <IconButton>
                     <AssignmentIndIcon className="nav-icon" />{" "}
@@ -144,7 +141,7 @@ const Nav = () => {
           <li>
             {" "}
             <Link
-              to="/favorites"
+              href="/favorites"
               className="link icon-link"
               style={{ display: user._id ? "block" : "none" }}
             >
@@ -158,7 +155,7 @@ const Nav = () => {
           <li>
             {" "}
             {cart && (
-              <Link to="/checkout/cart" className="link icon-link">
+              <Link href="/checkout/cart" className="link icon-link">
                 <Tooltip title="cart">
                   <IconButton>
                     <LocalMallIcon className="nav-icon" />({cart.length})
@@ -171,11 +168,7 @@ const Nav = () => {
           <li>
             {" "}
             <Link
-              to={
-                !isLoading
-                  ? "/customer/account/orders"
-                  : "/customer/account/login"
-              }
+              href={!isLoading ? "/account/orders" : "/customer/account/login"}
               className="link icon-link"
             >
               <Tooltip title="account">
@@ -218,7 +211,6 @@ const Nav = () => {
       <LoginDropdown
         setLoginDropdown={setLoginDropdown}
         loginDropdownOpen={loginDropdownOpen}
-        mv={mv}
       />
       <SaleDropdown
         saleDropdownOpen={saleDropdownOpen}

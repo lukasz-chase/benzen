@@ -4,7 +4,7 @@ import styled from "styled-components";
 //icons
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 //link
-import { Link } from "react-router-dom";
+import Link from "next/link";
 //notistack
 import { useSnackbar } from "notistack";
 //redux
@@ -51,16 +51,14 @@ const Card = ({ item, adminPanel, size = "sm" }) => {
           onClick={() => favoritesHandler()}
         />
       )}
-      <Link
-        to={adminPanel ? `/items/${item._id}/admin` : `/items/${item._id}`}
-        className="link"
-        onClick={() => window.scrollTo(0, 0)}
-      >
+      <Link href={adminPanel ? `/item/${item._id}/admin` : `/item/${item._id}`}>
         <img
           src={item?.images[0]}
           alt={item.name}
           onMouseOver={(e) => (e.currentTarget.src = `${item?.images[1]}`)}
           onMouseOut={(e) => (e.currentTarget.src = `${item?.images[0]}`)}
+          onClick={() => window.scrollTo(0, 0)}
+          style={{ cursor: "pointer" }}
         />
       </Link>
       <div className="name">{item.name}</div>

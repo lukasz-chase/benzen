@@ -1,8 +1,7 @@
-import React from "react";
 //styled
 import styled from "styled-components";
 //router
-import { Link } from "react-router-dom";
+import Link from "next/link";
 //material ui
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -122,7 +121,7 @@ const HamburgerMenu = ({
                 </AccordionSummary>
                 {/* man clothes links */}
                 {ManClothesLinks.map((item) => (
-                  <Link to={item.path} className="link" key={item.path}>
+                  <Link href={item.path} className="link" key={item.path}>
                     <AccordionDetails onClick={() => linkHandler()}>
                       {item.title}
                     </AccordionDetails>
@@ -141,7 +140,7 @@ const HamburgerMenu = ({
                 {/* man accessories link  */}
                 {ManAccessoriesLinks.map((accessory) => (
                   <Link
-                    to={accessory.path}
+                    href={accessory.path}
                     className="link"
                     key={accessory.path}
                   >
@@ -158,7 +157,7 @@ const HamburgerMenu = ({
           <Accordion className="one-accordion">
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               {/* header  */}
-              <Link to="/woman" className="link">
+              <Link href="/woman" className="link">
                 <h1>Woman</h1>
               </Link>
             </AccordionSummary>
@@ -192,13 +191,10 @@ const HamburgerMenu = ({
                   <h1>Clothes</h1>
                 </AccordionSummary>
                 {WomanClothesLinks.map((item) => (
-                  <Link
-                    to={item.path}
-                    className="link"
-                    onClick={() => linkHandler()}
-                    key={item.path}
-                  >
-                    <AccordionDetails>{item.title}</AccordionDetails>
+                  <Link href={item.path} className="link" key={item.path}>
+                    <AccordionDetails onClick={() => linkHandler()}>
+                      {item.title}
+                    </AccordionDetails>
                   </Link>
                 ))}
               </Accordion>
@@ -211,13 +207,10 @@ const HamburgerMenu = ({
                   <h1>Shoes</h1>
                 </AccordionSummary>
                 {WomanShoesLinks.map((shoe) => (
-                  <Link
-                    to={shoe.path}
-                    className="link"
-                    onClick={() => linkHandler()}
-                    key={shoe.path}
-                  >
-                    <AccordionDetails>{shoe.title}</AccordionDetails>
+                  <Link href={shoe.path} className="link" key={shoe.path}>
+                    <AccordionDetails onClick={() => linkHandler()}>
+                      {shoe.title}
+                    </AccordionDetails>
                   </Link>
                 ))}
               </Accordion>
@@ -231,12 +224,13 @@ const HamburgerMenu = ({
                 </AccordionSummary>
                 {WomanAccessoriesLinks.map((accessory) => (
                   <Link
-                    to={accessory.path}
+                    href={accessory.path}
                     className="link"
-                    onClick={() => linkHandler()}
                     key={accessory.path}
                   >
-                    <AccordionDetails>{accessory.title}</AccordionDetails>
+                    <AccordionDetails onClick={() => linkHandler()}>
+                      {accessory.title}
+                    </AccordionDetails>
                   </Link>
                 ))}
               </Accordion>

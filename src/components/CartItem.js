@@ -6,7 +6,7 @@ import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 //redux
 import { useDispatch } from "react-redux";
 //router
-import { Link } from "react-router-dom";
+import Link from "next/link";
 //constants
 import {
   DECREASE_CART_AMOUNT,
@@ -49,7 +49,7 @@ const CartItem = ({ item }) => {
   return (
     <ItemComponent>
       <div className="item-info">
-        <Link to={`/items/${_id}`}>
+        <Link href={`/items/${_id}`}>
           <div className="image">
             <img src={img} alt={name} />
           </div>

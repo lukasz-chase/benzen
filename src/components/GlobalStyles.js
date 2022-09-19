@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
 }
 .link{
     color:black;
+    cursor: pointer;
     &:hover{
         color: black;
         text-decoration:none;
