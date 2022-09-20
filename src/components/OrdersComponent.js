@@ -7,8 +7,6 @@ import Button from "./Button";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 //react router
 import Link from "next/link";
-//components
-import OrderDetails from "./OrderDetails";
 import OrderCard from "./OrderCard";
 //material ui
 import Pagination from "@material-ui/lab/Pagination";
@@ -18,7 +16,6 @@ const OrderComponent = ({
   orders,
   title,
   link,
-  snackbarHandler,
   numberOfPages,
 }) => {
   //state
@@ -40,16 +37,12 @@ const OrderComponent = ({
             </Link>
             {orderDetails && <span>{orderDetails}</span>}
           </Breadcrumbs>
-          {orders && !orderDetails ? (
+          {orders && (
             <>
               {orders.map((order) => (
                 <OrderCard key={order._id} order={order} path={link.path} />
               ))}
             </>
-          ) : (
-            <div className="specific-order">
-              <OrderDetails snackbarHandler={snackbarHandler} />
-            </div>
           )}
         </>
       ) : (

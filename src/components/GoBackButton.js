@@ -6,14 +6,14 @@ import { useRouter } from "next/router";
 //component
 import Button from "../components/Button";
 
-const GoBackButton = () => {
+const GoBackButton = ({ label = "Go back to admins panel" }) => {
   const router = useRouter();
   return (
     <Button
       variant="black"
-      label="Go back to admins panel"
+      label={label}
       Icon={<ArrowLeftIcon />}
-      onClick={() => router.go(-1)}
+      onClick={() => router.back()}
       size="lg"
     />
   );

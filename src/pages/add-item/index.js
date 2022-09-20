@@ -11,14 +11,14 @@ import TextField from "@material-ui/core/TextField";
 //link
 import { useRouter } from "next/router";
 //actions
-import { createItem, getItem, updateItem } from "../actions/itemsAction";
+import { createItem, getItem, updateItem } from "../../actions/itemsAction";
 //redux
 import { useDispatch } from "react-redux";
 //components
-import Button from "../components/Button";
-import GoBackButton from "../components/GoBackButton";
+import Button from "../../components/Button";
+import GoBackButton from "../../components/GoBackButton";
 //logic
-import { isAdmin } from "../components/Nav";
+import { isAdmin } from "../../components/Nav";
 
 const AddItemPage = () => {
   //state
@@ -41,8 +41,7 @@ const AddItemPage = () => {
   const [materialPercentage, setMaterialPercentage] = useState("");
   const [lastMaterialId, setLastMaterialId] = useState(0);
   //images
-  const location = router.pathname;
-  const id = location.pathname.split("/")[2];
+  const id = router.asPath.split("/")[2];
   const dispatch = useDispatch();
   useEffect(() => {
     if (id) {

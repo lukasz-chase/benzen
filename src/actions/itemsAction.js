@@ -97,7 +97,7 @@ export const deleteItem = (id, router) => async (dispatch) => {
   try {
     await api.deleteItem(id);
     dispatch({ type: DELETE, payload: id });
-    router.go(-1);
+    router.back();
   } catch (error) {
     console.log(error);
   }

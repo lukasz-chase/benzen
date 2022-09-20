@@ -97,7 +97,7 @@ const AccountPage = () => {
                   title="My account"
                   link={{
                     label: "My orders",
-                    path: "/account/orders",
+                    path: "/order/account",
                   }}
                   orders={userOrders}
                   numberOfPages={numberOfPages}

@@ -48,11 +48,12 @@ const AdminPanel = () => {
           {adminLinks.map((link) => (
             <>
               {link.restriction === user.role && (
-                <Link
-                  href={link.path}
-                  className={link.name === pathName ? "link active" : "link"}
-                >
-                  <li>{link.label}</li>
+                <Link href={link.path}>
+                  <li
+                    className={link.name === pathName ? "link active" : "link"}
+                  >
+                    {link.label}
+                  </li>
                 </Link>
               )}
             </>
@@ -64,7 +65,7 @@ const AdminPanel = () => {
           <OrdersComponent
             orderDetails={details}
             title="Admin panel"
-            link={{ label: "orders", path: "/admin/panel/orders" }}
+            link={{ label: "orders", path: "/order/admin/" }}
             orders={orders}
             snackbarHandler={snackbarHandler}
             numberOfPages={numberOfPages}
