@@ -4,8 +4,8 @@ import styled from "styled-components";
 //material ui
 import Input from "./Input";
 //icons
-import CloseIcon from "@mui/icons-materia/Close";
-import ArrowBackIosIcon from "@mui/icons-materia/ArrowBackIos";
+import CloseIcon from "@mui/icons-material/Close";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 //data
 import { addressInputs } from "../descriptions/inputs";
 //components
