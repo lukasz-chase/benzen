@@ -2,10 +2,6 @@
   "name": "benzen",
   "version": "0.1.0",
   "private": true,
-  "resolutions": {
-    "**/react": "^18.2.0",
-    "**/react-dom": "^18.2.0"
-  },
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -26,7 +22,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^18.2.0",
-    "react-redux": "^7.2.2",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "redux": "^4.0.5",
@@ -40,12 +36,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [

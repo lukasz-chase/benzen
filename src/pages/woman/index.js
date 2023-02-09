@@ -65,20 +65,22 @@ const WomanMainPage = () => {
         )}
         <CarouselStyles>
           <Carousel interval={5000}>
-            {carouselItems.map((item) => (
-              <Carousel.Item>
+            {carouselItems.map((item, index) => (
+              <Carousel.Item key={index}>
                 <img
                   className="d-block w-100"
                   src={item.src}
                   alt={item.title[0].label}
                 />
                 <Carousel.Caption>
-                  {item.title.map((title) => (
-                    <h3 style={{ color: title.color }}>{title.label}</h3>
+                  {item.title.map((title, itemIndex) => (
+                    <h3 style={{ color: title.color }} key={itemIndex}>
+                      {title.label}
+                    </h3>
                   ))}
                   <p>{item.subTitle}</p>
-                  {item.links.map((link) => (
-                    <Link href={link.path} className="link">
+                  {item.links.map((link, linkIndex) => (
+                    <Link href={link.path} className="link" key={linkIndex}>
                       <Button
                         label={link.label}
                         onClick={() => linkHandler()}

@@ -29,16 +29,18 @@ const ManMainPage = () => {
       <div className="items">
         <CarouselStyles>
           <Carousel interval={5000}>
-            {carouselItems.map((item) => (
-              <Carousel.Item>
+            {carouselItems.map((item, index) => (
+              <Carousel.Item key={index}>
                 <img
                   className="d-block w-100"
                   src={item.src}
                   alt={item.title[0].label}
                 />
                 <Carousel.Caption>
-                  {item.title.map((title) => (
-                    <h3 style={{ color: title.color }}>{title.label}</h3>
+                  {item.title.map((title, itemIndex) => (
+                    <h3 style={{ color: title.color }} key={itemIndex}>
+                      {title.label}
+                    </h3>
                   ))}
                   <p>{item.subTitle}</p>
                   <Link href={item.link.path} className="link">
@@ -57,13 +59,14 @@ const ManMainPage = () => {
           </div>
         )}
         <div className="four-components">
-          {imageComponent.map((image) => (
+          {imageComponent.map((image, imageIndex) => (
             <ImageComponent
               text={image.label}
               textColor={image.textColor}
               img={image.src}
               buttons={[{ text: image.btnLabeL, link: image.link }]}
               width={image.width}
+              key={imageIndex}
             />
           ))}
         </div>

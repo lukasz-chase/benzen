@@ -115,6 +115,7 @@ const CheckoutPage = () => {
               deliveryPrice={delivery.deliveryPrice}
               delivery={deliveryOption}
               img={delivery.img}
+              key={delivery.option}
             />
           ))}
         </div>

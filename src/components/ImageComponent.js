@@ -15,7 +15,7 @@ const ImageComponent = ({ width, text, textColor, img, buttons }) => {
       <span style={{ color: `${textColor}` }}>{text}</span>
       <div className="buttons">
         {buttons.map(({ link, text }) => (
-          <Link href={link} className="link">
+          <Link href={link} className="link" key={link}>
             <Button label={text} onClick={() => linkHandler()} />
           </Link>
         ))}
