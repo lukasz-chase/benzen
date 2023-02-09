@@ -4,6 +4,5 @@ module.exports = {
   },
   images: {
     domains: ["benzen-items.s3.amazonaws.com"],
-    allowFutureImage: true,
   },
 };
