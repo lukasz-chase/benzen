@@ -2,9 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/item/[id]": "pages/item/[id].js",
-  "/woman/[category]/[item]": "pages/woman/[category]/[item].js",
-  "/favorites": "pages/favorites.js",
-  "/man/[category]/[item]": "pages/man/[category]/[item].js"
+  "/man/[category]/[item]": "pages/man/[category]/[item].js",
+  "/": "pages/index.js"
 }
