@@ -1,6 +1,6 @@
 import React from "react";
 //icons
-import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 //link
 import { useRouter } from "next/router";
 //component

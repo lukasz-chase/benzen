@@ -8,13 +8,13 @@ import { getUserOrders } from "../../../actions/ordersAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //material ui
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import TextField from "@material-ui/core/TextField";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import TextField from "@mui/material/TextField";
 //icons
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import CloseIcon from "@material-ui/icons/Close";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import CloseIcon from "@mui/icons-material/Close";
 //components
 import Button from "../../../components/Button";
 import CartItem from "../../../components/CartItem";

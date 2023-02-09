@@ -2,8 +2,8 @@ import React from "react";
 //styled
 import styled from "styled-components";
 //icons
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import CloseIcon from "@material-ui/icons/Close";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import CloseIcon from "@mui/icons-material/Close";
 //link
 import Link from "next/link";
 //components

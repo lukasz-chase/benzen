@@ -4,10 +4,10 @@ import styled from "styled-components";
 //redux
 import { useSelector } from "react-redux";
 //material ui
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import TextField from "@material-ui/core/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
 //link
 import { useRouter } from "next/router";
 //actions

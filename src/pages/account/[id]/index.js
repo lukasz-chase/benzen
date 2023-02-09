@@ -7,10 +7,10 @@ import { useSelector } from "react-redux";
 //styling
 import styled from "styled-components";
 //icons
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
-import HomeIcon from "@material-ui/icons/Home";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
+import HomeIcon from "@mui/icons-material/Home";
 //components
 import AddressComponent from "../../../components/AddressComponent";
 import AccountInfo from "../../../components/AccountInfo";

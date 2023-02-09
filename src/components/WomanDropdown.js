@@ -4,10 +4,10 @@ import styled from "styled-components";
 //router
 import Link from "next/link";
 //material ui
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
 //icons
-import SearchIcon from "@material-ui/icons/Search";
+import SearchIcon from "@mui/icons-material/Search";
 //components
 import {
   WomanClothesLinks,

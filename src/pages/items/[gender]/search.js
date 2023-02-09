@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 //components
 import ShowLoading from "../../../components/ShowLoading";
 //material ui
-import Pagination from "@material-ui/lab/Pagination";
+import Pagination from "@mui/material/Pagination";
 
 const useQuery = () => new URLSearchParams(useRouter().search);
 

@@ -8,7 +8,7 @@ import { getLoggedUser } from "../../actions/userActions";
 import Card from "../../components/Card";
 import ShowLoading from "../../components/ShowLoading";
 //material ui
-import Pagination from "@material-ui/lab/Pagination";
+import Pagination from "@mui/material/Pagination";
 
 const FavoritesPage = () => {
   //state

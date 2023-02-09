@@ -7,15 +7,15 @@ import { useRouter } from "next/router";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 //material ui
-import Button from "@material-ui/core/Button";
-import Tooltip from "@material-ui/core/Tooltip";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
 //icons
-import IconButton from "@material-ui/core/IconButton";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import LocalMallIcon from "@material-ui/icons/LocalMall";
-import MenuIcon from "@material-ui/icons/Menu";
-import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import IconButton from "@mui/material/IconButton";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
+import MenuIcon from "@mui/icons-material/Menu";
+import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 //components
 import SaleDropdown from "./SaleDropdown";
 import WomanDropdown from "../components/WomanDropdown";

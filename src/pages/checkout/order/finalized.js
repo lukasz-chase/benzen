@@ -2,7 +2,7 @@ import React from "react";
 //styling
 import styled from "styled-components";
 //icons
-import DoneAllIcon from "@material-ui/icons/DoneAll";
+import DoneAllIcon from "@mui/icons-material/DoneAll";
 //redux
 import { useSelector } from "react-redux";
 //moment

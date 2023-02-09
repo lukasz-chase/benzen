@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 //styling
 import styled from "styled-components";
 //icons
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 //link
 import Link from "next/link";
 //notistack

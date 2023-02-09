@@ -8,10 +8,10 @@ import styled from "styled-components";
 //router
 import { useRouter } from "next/router";
 //icons
-import ViewComfyIcon from "@material-ui/icons/ViewComfy";
-import ViewColumnIcon from "@material-ui/icons/ViewColumn";
+import ViewComfyIcon from "@mui/icons-material/ViewComfy";
+import ViewColumnIcon from "@mui/icons-material/ViewColumn";
 //material ui
-import Pagination from "@material-ui/lab/Pagination";
+import Pagination from "@mui/material/Pagination";
 //components
 import Card from "../components/Card";
 import SortPrice from "../components/SortPrice";

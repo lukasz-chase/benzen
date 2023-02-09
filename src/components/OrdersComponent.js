@@ -4,12 +4,12 @@ import styled from "styled-components";
 //components
 import Button from "./Button";
 //material ui
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
 //react router
 import Link from "next/link";
 import OrderCard from "./OrderCard";
 //material ui
-import Pagination from "@material-ui/lab/Pagination";
+import Pagination from "@mui/material/Pagination";
 
 const OrderComponent = ({
   orderDetails,

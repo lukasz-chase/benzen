@@ -13,7 +13,7 @@ import SimpleClothesHeader from "../../components/SimpleClothesHeader";
 import SaleLinks from "../../components/SaleLinks";
 import ShowLoading from "../../components/ShowLoading";
 //material ui
-import Pagination from "@material-ui/lab/Pagination";
+import Pagination from "@mui/material/Pagination";
 
 const SalePage = () => {
   const [page, setPage] = useState(1);

@@ -2,8 +2,8 @@ import React from "react";
 //styling
 import styled from "styled-components";
 //icons
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-import CloseIcon from "@material-ui/icons/Close";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import CloseIcon from "@mui/icons-material/Close";
 //components
 import Button from "./Button";
 import Address from "./Address";

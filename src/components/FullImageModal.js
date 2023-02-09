@@ -2,9 +2,9 @@ import React from "react";
 //styled
 import styled from "styled-components";
 //icons
-import CloseIcon from "@material-ui/icons/Close";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import CloseIcon from "@mui/icons-material/Close";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 const FullImageModal = ({
   setCurrentIndex,

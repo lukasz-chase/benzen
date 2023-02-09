@@ -9,7 +9,7 @@ import { getOrders } from "../../../actions/ordersAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //material ui
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
 //components
 import UserDetails from "../../../components/UserDetails";
 import ItemsComponent from "../../../components/ItemsComponent";

@@ -8,11 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 //actions
 import { createOrder } from "../../../actions/ordersAction";
 //material ui
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
 //icons
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 //components
 import AddressModal from "../../../components/AddressModal";
 import ChooseAddressModal from "../../../components/ChooseAddressModal";

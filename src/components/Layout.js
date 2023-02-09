@@ -12,7 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //notistack
 import { SnackbarProvider } from "notistack";
 //icon
-import CloseIcon from "@material-ui/icons/Close";
+import CloseIcon from "@mui/icons-material/Close";
 
 const composeEnhancer = compose;
 

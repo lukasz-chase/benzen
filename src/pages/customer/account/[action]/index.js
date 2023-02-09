@@ -8,10 +8,10 @@ import { signin, signup } from "../../../../actions/authAction";
 //styling
 import styled from "styled-components";
 //icons
-import SearchIcon from "@material-ui/icons/Search";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import SearchIcon from "@mui/icons-material/Search";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 //history
-import HistoryIcon from "@material-ui/icons/History";
+import HistoryIcon from "@mui/icons-material/History";
 //data
 import { signIn, signUp } from "../../../../descriptions/inputs";
 //components

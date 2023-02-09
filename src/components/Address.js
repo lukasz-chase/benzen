@@ -4,7 +4,7 @@ import { deleteAddress } from "../actions/userActions";
 //redux
 import { useDispatch } from "react-redux";
 //material ui
-import Checkbox from "@material-ui/core/Checkbox";
+import Checkbox from "@mui/material/Checkbox";
 //styling
 import styled from "styled-components";
 

@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 //styling
 import styled from "styled-components";
 //material ui
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 //router
 import Link from "next/link";
 //redux
@@ -18,12 +18,12 @@ import { getItem, deleteItem } from "../../../actions/itemsAction";
 //router
 import { useRouter } from "next/router";
 //icons
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import LocalMallIcon from "@material-ui/icons/LocalMall";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 //components
 import SmallImage from "../../../components/SmallImage";
 import CheckoutModal from "../../../components/CheckoutModal";

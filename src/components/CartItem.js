@@ -2,7 +2,7 @@ import React from "react";
 //styling
 import styled from "styled-components";
 //icons
-import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 //redux
 import { useDispatch } from "react-redux";
 //router

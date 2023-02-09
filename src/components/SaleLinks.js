@@ -6,7 +6,7 @@ import axios from "axios";
 //location
 import Link from "next/link";
 //material ui
-import AccordionDetails from "@material-ui/core/AccordionDetails";
+import AccordionDetails from "@mui/material/AccordionDetails";
 
 const SaleLinks = ({ gender, category, hamburger, setNavOpen, navOpen }) => {
   //state
