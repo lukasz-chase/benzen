@@ -2,7 +2,7 @@ import React from "react";
 //styling
 import styled from "styled-components";
 //components
-import ImageComponent from "../components/ImageComponent";
+import ImageComponent from "../../components/ImageComponent";
 
 const SaleMainPage = () => {
   return (

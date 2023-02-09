@@ -68,7 +68,7 @@ const Nav = () => {
     <NavComponent>
       <div className="nav-left-menu">
         <ul>
-          <li>
+          <li className="nav-hamburger">
             <MenuIcon onClick={() => setNavOpen(!navOpen)} />
           </li>
           <Link href="/" className="link">
@@ -246,6 +246,12 @@ const NavComponent = styled.div`
           padding: 0rem 0.2rem;
         }
       }
+      .nav-hamburger {
+        display: none;
+        @media screen and (max-width: 1000px) {
+          display: block;
+        }
+      }
       li {
         padding: 0rem 1rem;
         @media screen and (max-width: 1000px) {
@@ -253,12 +259,6 @@ const NavComponent = styled.div`
         }
         &:hover {
           cursor: pointer;
-        }
-        &:first-child {
-          display: none;
-          @media screen and (max-width: 1000px) {
-            display: block;
-          }
         }
       }
     }

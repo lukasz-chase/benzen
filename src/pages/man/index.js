@@ -6,15 +6,15 @@ import Link from "next/link";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { getItemsByItem } from "../actions/itemsAction";
+import { getItemsByItem } from "../../actions/itemsAction";
 //components
-import Card from "../components/Card";
-import ImageComponent from "../components/ImageComponent";
-import Button from "../components/Button";
+import Card from "../../components/Card";
+import ImageComponent from "../../components/ImageComponent";
+import Button from "../../components/Button";
 //bootstrap
 import Carousel from "react-bootstrap/Carousel";
 //data
-import { carouselItems, imageComponent } from "../descriptions/manMainPage";
+import { carouselItems, imageComponent } from "../../descriptions/manMainPage";
 
 const ManMainPage = () => {
   //dispatch

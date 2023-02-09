@@ -6,14 +6,14 @@ import { useSelector } from "react-redux";
 //location
 import { useRouter } from "next/router";
 //components
-import SimpleClothesHeader from "../components/SimpleClothesHeader";
-import Card from "../components/Card";
+import SimpleClothesHeader from "../../../components/SimpleClothesHeader";
+import Card from "../../../components/Card";
 //actions
-import { getItemsBySearch } from "../actions/itemsAction";
+import { getItemsBySearch } from "../../../actions/itemsAction";
 //redux
 import { useDispatch } from "react-redux";
 //components
-import ShowLoading from "../components/ShowLoading";
+import ShowLoading from "../../../components/ShowLoading";
 //material ui
 import Pagination from "@material-ui/lab/Pagination";
 
