@@ -1,4 +1,4 @@
-you can check it live on: https://benzen.netlify.app/
+you can check it live on: https://benzen-nine.vercel.app/
 
 backend files - https://github.com/luki752/benzen-server
 
