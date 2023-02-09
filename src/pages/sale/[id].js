@@ -4,14 +4,14 @@ import styled from "styled-components";
 //location
 import { useRouter } from "next/router";
 //action
-import { getItemsOnSale } from "../actions/itemsAction";
+import { getItemsOnSale } from "../../actions/itemsAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //components
-import Card from "../components/Card";
-import SimpleClothesHeader from "../components/SimpleClothesHeader";
-import SaleLinks from "../components/SaleLinks";
-import ShowLoading from "../components/ShowLoading";
+import Card from "../../components/Card";
+import SimpleClothesHeader from "../../components/SimpleClothesHeader";
+import SaleLinks from "../../components/SaleLinks";
+import ShowLoading from "../../components/ShowLoading";
 //material ui
 import Pagination from "@material-ui/lab/Pagination";
 
