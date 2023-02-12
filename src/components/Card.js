@@ -20,7 +20,7 @@ const Card = ({ item, adminPanel, size = "sm" }) => {
   useEffect(() => {
     if (!isLoading) {
       setFavorite(
-        user.favorites.find((favorite) => favorite === String(item._id))
+        user.favorites?.find((favorite) => favorite === String(item._id))
       );
     }
   }, [isLoading, user, item._id]);

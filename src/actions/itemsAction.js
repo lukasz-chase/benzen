@@ -78,7 +78,7 @@ export const createItem = (item, router) => async (dispatch) => {
   try {
     const { data } = await api.createItem(item);
     dispatch({ type: CREATE, payload: data });
-    router.push(`/items/${data._id}/admin`);
+    router.push(`/item/${data._id}`);
   } catch (error) {
     console.log(error);
   }

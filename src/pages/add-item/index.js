@@ -137,8 +137,8 @@ const AddItemPage = () => {
       formData.append("images", image);
     }
     if (emptyCheck()) {
-      clear();
       dispatch(createItem(formData, router));
+      clear();
     } else {
       alert("Inputs cant be empty");
     }

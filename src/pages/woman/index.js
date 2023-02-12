@@ -58,7 +58,7 @@ const WomanMainPage = () => {
         />
         {!isLoading && (
           <div className="four-cards">
-            {items.slice(4, 8).map((cloth) => (
+            {items.slice(3, 7).map((cloth) => (
               <Card key={cloth._id} item={cloth} />
             ))}
           </div>

@@ -158,10 +158,10 @@ const LoggedInComponent = styled.div`
     }
   }
   .right-side {
-    width: 60%;
+    width: 90%;
     justify-content: center;
     align-items: Center;
-
+    padding: 0 2rem;
     @media screen and (max-width: 1000px) {
       width: 100%;
       margin: 0rem 0.5rem;
@@ -174,20 +174,6 @@ const LoggedInComponent = styled.div`
       @media screen and (max-width: 1000px) {
         margin: 1rem 0;
         width: 90%;
-      }
-    }
-    .inputs-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-    .no-orders {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      .buttons {
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
     }
     font-size: 2rem;

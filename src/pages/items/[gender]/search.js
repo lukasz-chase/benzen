@@ -17,20 +17,17 @@ import ShowLoading from "../../../components/ShowLoading";
 //material ui
 import Pagination from "@mui/material/Pagination";
 
-const useQuery = () => new URLSearchParams(useRouter().search);
-
 const SearchPage = () => {
   //state
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState(1);
   const router = useRouter();
+  const { gender, searchQuery } = router.query;
   const dispatch = useDispatch();
-  const gender = router.pathname.split("/")[2];
-  const question = useQuery().get("searchQuery");
   //dispatch data
   useEffect(() => {
-    dispatch(getItemsBySearch(gender, question, page, sort));
-  }, [dispatch, gender, question, page, sort]);
+    dispatch(getItemsBySearch(gender, searchQuery, page, sort));
+  }, [dispatch, gender, searchQuery, page, sort]);
   //get data back
   const { items, isLoading, numberOfPages } = useSelector(
     (state) => state.item
@@ -42,7 +39,7 @@ const SearchPage = () => {
   };
   return (
     <SearchPageComponent>
-      {question !== "" && <h1>Results for {question}</h1>}
+      {searchQuery !== "" && <h1>Results for {searchQuery}</h1>}
       <ShowLoading isLoading={isLoading}>
         <SimpleClothesHeader
           sort={sort}

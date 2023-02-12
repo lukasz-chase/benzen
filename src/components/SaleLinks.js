@@ -74,6 +74,7 @@ const SaleLinksComponent = styled.div`
     padding: 0rem;
     li {
       padding: 0.4rem 0rem;
+      cursor: pointer;
       &:hover {
         text-decoration: underline;
       }

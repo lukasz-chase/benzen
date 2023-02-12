@@ -22,7 +22,7 @@ import moment from "moment";
 const User = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const pathId = router.pathname.split("/")[4];
+  const pathId = router.asPath.split("/")[4];
   useEffect(() => {
     dispatch(getUserById(pathId));
     dispatch(getUserOrders(pathId));

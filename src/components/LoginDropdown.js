@@ -86,7 +86,7 @@ const LoginDropdownComponent = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   width: 20vw;
   z-index: 10;
   display: flex;

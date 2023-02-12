@@ -278,6 +278,7 @@ const NavComponent = styled.div`
           font-family: "Raleway", sans-serif;
           font-size: 1rem;
           padding: 0rem 1rem;
+          color: black;
         }
       }
     }

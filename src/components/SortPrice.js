@@ -11,7 +11,6 @@ const SortPrice = ({ sort, handleSort }) => {
   return (
     <SortPriceComponent>
       <FormControl>
-        <InputLabel className="sort-label">Sort price</InputLabel>
         <Select value={sort} onChange={handleSort} className="sort-select">
           <MenuItem value="1">Sort price low to high</MenuItem>
           <MenuItem value="-1">Sort price high to low</MenuItem>

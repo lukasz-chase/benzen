@@ -74,6 +74,16 @@ const OrdersComponent = styled.div`
   @media screen and (max-width: 1000px) {
     margin-left: 0;
   }
+  .no-orders {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 `;
 
 export default OrderComponent;

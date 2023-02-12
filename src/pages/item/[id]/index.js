@@ -125,7 +125,7 @@ const ItemDetailsPage = () => {
   return (
     <>
       {" "}
-      <ItemDetailsPageComponent>
+      <ItemDetailsPageComponent modal={modal}>
         <ShowLoading isLoading={isItemLoading}>
           <div className="top-side">
             <div className="left-side">
@@ -199,8 +199,10 @@ const ItemDetailsPage = () => {
                   >
                     Delete <DeleteIcon className="delete-icon" />
                   </span>
-                  <Link href={`/add-item/${item._id}`} className="edit-button">
-                    <p>
+                  <Link
+                    href={{ pathname: "/add-item/", query: { id: item._id } }}
+                  >
+                    <p className="edit-button">
                       Edit <EditIcon className="edit-icon" />
                     </p>
                   </Link>

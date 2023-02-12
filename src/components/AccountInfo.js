@@ -147,6 +147,7 @@ const InfoComponent = styled.div`
     text-align: left;
     .input {
       width: 15rem;
+      padding: 0.5rem 0;
     }
     .password-change {
       display: flex;

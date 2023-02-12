@@ -158,6 +158,11 @@ const AddressWrapper = styled.div`
       }
     }
   }
+  .inputs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.5rem;
+  }
 `;
 
 export default AddressComponent;

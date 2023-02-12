@@ -36,7 +36,7 @@ const SaleDropdownComponent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2.5rem;
+  margin-top: 2.4rem;
   z-index: 50;
   .dropdown-menu {
     position: absolute;
